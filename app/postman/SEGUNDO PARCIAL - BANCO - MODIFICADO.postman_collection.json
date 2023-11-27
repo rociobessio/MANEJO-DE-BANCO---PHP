@@ -1,0 +1,1047 @@
+{
+	"info": {
+		"_postman_id": "8b26f385-e37f-4228-bd5d-106dfa676307",
+		"name": "SEGUNDO PARCIAL - BANCO - MODIFICADO",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24011357"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"item": [
+				{
+					"name": "LOGUEAR CLIENTE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "emailUsuario",
+									"value": "josemart@yahoo.com.ar",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "123josefina",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGUEAR ADMIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "emailUsuario",
+									"value": "admin@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "123admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USUARIOS",
+			"item": [
+				{
+					"name": "LISTAR USUARIOS",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDA5NDA2MTQsImV4cCI6MTcwMTAwMDYxNCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsidXN1YXJpbyI6IkFkbWluIiwibnJvRG9jdW1lbnRvIjoiMDEwMTAxMDEwMSIsImlkIjoyLCJyb2wiOiJBZG1pbiJ9LCJhcHAiOiJTUCBCYW5jbyJ9.VLvHpgEaZFwIQHIq8u8e9zNUdgyq2_e1-UE0f1EAPtI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:666/usuario/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CARGAR USUARIO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDA5NDcyNDAsImV4cCI6MTcwMTAwNzI0MCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsidXN1YXJpbyI6IkFkbWluIiwibnJvRG9jdW1lbnRvIjoiMDEwMTAxMDEwMSIsImlkIjoyLCJyb2wiOiJBZG1pbiJ9LCJhcHAiOiJTUCBCYW5jbyJ9.eI2S4AtUOxAyiMfddC5ryjkS48nMKUWpUy_DF6Ti97I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nombre",
+									"value": "Martin",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "Ramirez",
+									"type": "text"
+								},
+								{
+									"key": "tipoDocumento",
+									"value": "LC",
+									"type": "text"
+								},
+								{
+									"key": "numeroDocumento",
+									"value": "44789123",
+									"type": "text"
+								},
+								{
+									"key": "rol",
+									"value": "Cliente",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "martinrami@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "123martin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/usuario/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"usuario",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR UNO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/usuario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"usuario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CUENTAS",
+			"item": [
+				{
+					"name": "LISTAR CUENTAS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/cuenta/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"cuenta",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR UNO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/cuenta/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"cuenta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CARGAR CUENTA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "idUsuario",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "tipoCuenta",
+									"value": "CA$",
+									"type": "text"
+								},
+								{
+									"key": "moneda",
+									"value": "$",
+									"type": "text"
+								},
+								{
+									"key": "saldo",
+									"value": "9000",
+									"type": "text"
+								},
+								{
+									"key": "fotoCuenta",
+									"type": "file",
+									"src": "/C:/Users/Rocio/Downloads/usuario_2.jpg"
+								},
+								{
+									"key": "nroCuenta",
+									"value": "4",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/cuenta/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"cuenta",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MODIFICAR CUENTA",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "tipoCuenta",
+									"value": "CA$",
+									"type": "text"
+								},
+								{
+									"key": "moneda",
+									"value": "U$S",
+									"type": "text"
+								},
+								{
+									"key": "monedaMod",
+									"value": "$",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/cuenta/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"cuenta",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BAJA DE CUENTA",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/cuenta/1/CA$/$",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"cuenta",
+								"1",
+								"CA$",
+								"$"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DEPOSITOS",
+			"item": [
+				{
+					"name": "LISTAR DEPOSITOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/deposito/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"deposito",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRAER DEPOSITO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/deposito/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"deposito",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CARGAR DEPOSITO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nroCuenta",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "tipoCuenta",
+									"value": "CAU$S",
+									"type": "text"
+								},
+								{
+									"key": "importeDeposito",
+									"value": "18000",
+									"type": "text"
+								},
+								{
+									"key": "fotoTalonDeposito",
+									"type": "file",
+									"src": "/C:/Users/Rocio/Downloads/descarga (2).jpeg"
+								},
+								{
+									"key": "moneda",
+									"value": "U$S",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/deposito/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"deposito",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MODIFICAR DEPOSITO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "tipoCuenta",
+									"value": "CAU$S",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/deposito/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"deposito",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RETIROS",
+			"item": [
+				{
+					"name": "LISTAR RETIROS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/retiro/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"retiro",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRAER RETIRO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/retiro/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"retiro",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CARGAR RETIRO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nroCuenta",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "tipoCuenta",
+									"value": "CA$",
+									"type": "text"
+								},
+								{
+									"key": "importeRetiro",
+									"value": "3000",
+									"type": "text"
+								},
+								{
+									"key": "moneda",
+									"value": "$",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/retiro/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"retiro",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MODIFICAR RETIRO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "importeRetiro",
+									"value": "1500",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/retiro/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"retiro",
+								"5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MOVIMIENTOS",
+			"item": [
+				{
+					"name": "DEPOSITOS",
+					"item": [
+						{
+							"name": "TOTAL DEPOSITOS FECHA PARTICULAR",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/totalDepositadoFechaParticular?tipoCuenta=CAU$S",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"totalDepositadoFechaParticular"
+									],
+									"query": [
+										{
+											"key": "tipoCuenta",
+											"value": "CAU$S"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DEPOSITOS ENTRE FECHAS ORDENADOS X NOMBRE",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/depositosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-25",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"depositosEntreFechasOrdenNombre"
+									],
+									"query": [
+										{
+											"key": "fechaInicio",
+											"value": "2023-11-22"
+										},
+										{
+											"key": "fechaFin",
+											"value": "2023-11-25"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DEPOSITOS POR USUARIO",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/depositosPorUsuario?emailUsuario=rocibessio@gmail.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"depositosPorUsuario"
+									],
+									"query": [
+										{
+											"key": "emailUsuario",
+											"value": "rocibessio@gmail.com"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "DEPOSITOS POR TIPO CUENTA",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/depositosPorTipoCuenta?tipoCuenta=CA$",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"depositosPorTipoCuenta"
+									],
+									"query": [
+										{
+											"key": "tipoCuenta",
+											"value": "CA$"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "LISTAR DEPOSITOS POR MONEDA",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/depositosPorMoneda?moneda=U$S",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"depositosPorMoneda"
+									],
+									"query": [
+										{
+											"key": "moneda",
+											"value": "U$S"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "RETIROS",
+					"item": [
+						{
+							"name": "TOTAL RETIRADO FECHA PARTICULAR",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/totalRetiradoFechaParticular?tipoCuenta=CAU$S&fechaParticular=2023-11-25",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"totalRetiradoFechaParticular"
+									],
+									"query": [
+										{
+											"key": "tipoCuenta",
+											"value": "CAU$S"
+										},
+										{
+											"key": "fechaParticular",
+											"value": "2023-11-25"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RETIRO POR USUARIO",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/retirosPorUsuario?emailUsuario=rocibessio@gmail.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"retirosPorUsuario"
+									],
+									"query": [
+										{
+											"key": "emailUsuario",
+											"value": "rocibessio@gmail.com"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RETIROS ENTRE FECHAS SORT NOMBRE",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/retirosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-22",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"retirosEntreFechasOrdenNombre"
+									],
+									"query": [
+										{
+											"key": "fechaInicio",
+											"value": "2023-11-22"
+										},
+										{
+											"key": "fechaFin",
+											"value": "2023-11-22"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RETIROS POR TIPO CUENTA",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/retirosPorTipoCuenta?tipoCuenta=CA$",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"retirosPorTipoCuenta"
+									],
+									"query": [
+										{
+											"key": "tipoCuenta",
+											"value": "CA$"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "RETIROS POR MONEDA",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:666/movimientos/retirosPorMoneda?moneda=U$S",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "666",
+									"path": [
+										"movimientos",
+										"retirosPorMoneda"
+									],
+									"query": [
+										{
+											"key": "moneda",
+											"value": "U$S"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "Contendrá las peticiones GET para los movimientos entre retiros."
+				},
+				{
+					"name": "DEPOSITOS & RETIROS POR USUARIO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/movimientos/retirosYDepositosPorUsuario?emailUsuario=rocibessio@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"movimientos",
+								"retirosYDepositosPorUsuario"
+							],
+							"query": [
+								{
+									"key": "emailUsuario",
+									"value": "rocibessio@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AJUSTES",
+			"item": [
+				{
+					"name": "LISTAR AJUSTES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/ajuste/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"ajuste",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRAER UNO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/ajuste/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"ajuste",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CARGAR AJUSTE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ajusteMonto",
+									"value": "2900",
+									"type": "text"
+								},
+								{
+									"key": "motivoAjuste",
+									"value": "Extraccion mal realizada.",
+									"type": "text"
+								},
+								{
+									"key": "nroExtraccion",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "nroDeposito",
+									"value": "3",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/ajuste/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"ajuste",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BORRAR AJUSTE",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "MODIFICAR AJUSTE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:666/ajuste/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"ajuste",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

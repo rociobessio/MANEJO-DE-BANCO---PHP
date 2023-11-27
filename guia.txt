@@ -1,0 +1,54 @@
+Ya estan hechos los controllers y models.
+
+->Quizas en Cuenta si va nombre,apellido,tipodoc,numerodoc y solo
+en Usuario, mail, clave y rol.
+
+->El borrar cuenta no anda tan bien
+
+==========================================================================
+El punto 1B - Cuenta Alta:
+->[YA ESTA]
+
+===========================================================================
+Punto 2 - Consultar Cuenta:
+->[YA ESTA]
+
+==========================================================================
+Punto 3 - Deposito Cuenta:
+->[YA ESTA]
+==========================================================================
+Punto 4 - Consulta Movimientos:
+->Son todos los movimientos realizados de depositos.
+->e- El listado de depósitos por moneda. El punto e si el listado es por
+tipo de moneda y se habia unificado moneda y tipo????
+->[YA ESTA, menos el listar por moneda]
+
+==========================================================================
+Punto 5 - Modificar Cuenta:
+->[YA ESTA]
+
+==========================================================================
+Punto 6 - Retiro Cuenta:
+->[YA ESTA]
+
+==========================================================================
+Punto 7 - Ajuste Cuenta:
+->[YA ESTA]
+->REVISAR IGUALMENTE
+==========================================================================
+Punto 8 - Borrar Cuenta: 
+->[YA ESTA]
+
+==========================================================================
+Punto 10 - Consulta Movimientos:
+->[YA ESTA]
+
+Comando para levantarlo:
+php -S localhost:666 -t app
+
+Levantar el JWT firebase:
+AUTENTIFICADOR JWT:
+1ro tirar: composer require firebase/php-jwt
+
+2do: en el composer.json poner: "firebase/php-jwt":"4.0"
+Luego tirar en la raiz del proyecto composer update

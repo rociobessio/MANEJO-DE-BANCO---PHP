@@ -91,7 +91,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDA5NDA2MTQsImV4cCI6MTcwMTAwMDYxNCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsidXN1YXJpbyI6IkFkbWluIiwibnJvRG9jdW1lbnRvIjoiMDEwMTAxMDEwMSIsImlkIjoyLCJyb2wiOiJBZG1pbiJ9LCJhcHAiOiJTUCBCYW5jbyJ9.VLvHpgEaZFwIQHIq8u8e9zNUdgyq2_e1-UE0f1EAPtI",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMTQ0NzcsImV4cCI6MTcwMTE3NDQ3NywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsidXN1YXJpbyI6IkFkbWluIiwibnJvRG9jdW1lbnRvIjoiMDEwMTAxMDEwMSIsImlkIjoyLCJyb2wiOiJBZG1pbiJ9LCJhcHAiOiJTUCBCYW5jbyJ9._5n_5Pjyg9tcVJ3J6avDS4VwfXa4ept46e62wdZB1nc",
 								"type": "text"
 							}
 						],
@@ -117,7 +117,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDA5NDcyNDAsImV4cCI6MTcwMTAwNzI0MCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsidXN1YXJpbyI6IkFkbWluIiwibnJvRG9jdW1lbnRvIjoiMDEwMTAxMDEwMSIsImlkIjoyLCJyb2wiOiJBZG1pbiJ9LCJhcHAiOiJTUCBCYW5jbyJ9.eI2S4AtUOxAyiMfddC5ryjkS48nMKUWpUy_DF6Ti97I",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMTQ0NzcsImV4cCI6MTcwMTE3NDQ3NywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsidXN1YXJpbyI6IkFkbWluIiwibnJvRG9jdW1lbnRvIjoiMDEwMTAxMDEwMSIsImlkIjoyLCJyb2wiOiJBZG1pbiJ9LCJhcHAiOiJTUCBCYW5jbyJ9._5n_5Pjyg9tcVJ3J6avDS4VwfXa4ept46e62wdZB1nc",
 								"type": "text"
 							}
 						],
@@ -126,22 +126,22 @@
 							"formdata": [
 								{
 									"key": "nombre",
-									"value": "Martin",
+									"value": "Miriam",
 									"type": "text"
 								},
 								{
 									"key": "apellido",
-									"value": "Ramirez",
+									"value": "Bridger",
 									"type": "text"
 								},
 								{
 									"key": "tipoDocumento",
-									"value": "LC",
+									"value": "DNI",
 									"type": "text"
 								},
 								{
 									"key": "numeroDocumento",
-									"value": "44789123",
+									"value": "37182031",
 									"type": "text"
 								},
 								{
@@ -151,12 +151,12 @@
 								},
 								{
 									"key": "email",
-									"value": "martinrami@gmail.com",
+									"value": "mirbrid@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "clave",
-									"value": "123martin",
+									"value": "123miriam",
 									"type": "text"
 								}
 							]
@@ -227,7 +227,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:666/cuenta/1",
+							"raw": "http://localhost:666/cuenta/100006",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -235,7 +235,7 @@
 							"port": "666",
 							"path": [
 								"cuenta",
-								"1"
+								"100006"
 							]
 						}
 					},
@@ -250,29 +250,29 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "idUsuario",
-									"value": "5",
+									"key": "nroDocumento",
+									"value": "37182031",
 									"type": "text"
 								},
 								{
 									"key": "tipoCuenta",
-									"value": "CA$",
+									"value": "CCU$S",
 									"type": "text"
 								},
 								{
 									"key": "moneda",
-									"value": "$",
+									"value": "U$S",
 									"type": "text"
 								},
 								{
 									"key": "saldo",
-									"value": "9000",
+									"value": "100000",
 									"type": "text"
 								},
 								{
 									"key": "fotoCuenta",
 									"type": "file",
-									"src": "/C:/Users/Rocio/Downloads/usuario_2.jpg"
+									"src": "/C:/Users/Rocio/Downloads/74268502-anciana-mirando-a-cámara.jpg"
 								},
 								{
 									"key": "nroCuenta",
@@ -343,7 +343,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:666/cuenta/1/CA$/$",
+							"raw": "http://localhost:666/cuenta/100002/CAU$S/U$S",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -351,9 +351,31 @@
 							"port": "666",
 							"path": [
 								"cuenta",
-								"1",
-								"CA$",
-								"$"
+								"100002",
+								"CAU$S",
+								"U$S"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CONSULTAR CUENTA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/cuenta/consultarCuenta/100007/CCU$S",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"cuenta",
+								"consultarCuenta",
+								"100007",
+								"CCU$S"
 							]
 						}
 					},
@@ -390,7 +412,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:666/deposito/1",
+							"raw": "http://localhost:666/deposito/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -398,7 +420,7 @@
 							"port": "666",
 							"path": [
 								"deposito",
-								"1"
+								"6"
 							]
 						}
 					},
@@ -414,23 +436,23 @@
 							"formdata": [
 								{
 									"key": "nroCuenta",
-									"value": "2",
+									"value": "100007",
 									"type": "text"
 								},
 								{
 									"key": "tipoCuenta",
-									"value": "CAU$S",
+									"value": "CCU$S",
 									"type": "text"
 								},
 								{
 									"key": "importeDeposito",
-									"value": "18000",
+									"value": "2000",
 									"type": "text"
 								},
 								{
 									"key": "fotoTalonDeposito",
 									"type": "file",
-									"src": "/C:/Users/Rocio/Downloads/descarga (2).jpeg"
+									"src": "/C:/Users/Rocio/Downloads/cheque-bancario-en-blanco-plantilla-de-comprobación-escritorio-personal-con-campo-vacío-para-rellenar-billete-diseño-monetario-171298530.webp"
 								},
 								{
 									"key": "moneda",
@@ -465,12 +487,31 @@
 								{
 									"key": "tipoCuenta",
 									"value": "CAU$S",
-									"type": "text"
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "numeroCuenta",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "importeDeposito",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "fechaDeposito",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:666/deposito/1",
+							"raw": "http://localhost:666/deposito/100007",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -478,7 +519,7 @@
 							"port": "666",
 							"path": [
 								"deposito",
-								"1"
+								"100007"
 							]
 						}
 					},
@@ -515,7 +556,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:666/retiro/",
+							"raw": "http://localhost:666/retiro/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -523,7 +564,7 @@
 							"port": "666",
 							"path": [
 								"retiro",
-								""
+								"7"
 							]
 						}
 					},
@@ -539,22 +580,22 @@
 							"formdata": [
 								{
 									"key": "nroCuenta",
-									"value": "5",
+									"value": "100007",
 									"type": "text"
 								},
 								{
 									"key": "tipoCuenta",
-									"value": "CA$",
+									"value": "CCU$S",
 									"type": "text"
 								},
 								{
 									"key": "importeRetiro",
-									"value": "3000",
+									"value": "4000",
 									"type": "text"
 								},
 								{
 									"key": "moneda",
-									"value": "$",
+									"value": "U$S",
 									"type": "text"
 								}
 							]
@@ -585,6 +626,26 @@
 								{
 									"key": "importeRetiro",
 									"value": "1500",
+									"type": "text"
+								},
+								{
+									"key": "tipoCuenta",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "numeroCuenta",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "moneda",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "fechaExtraccion",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -618,7 +679,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:666/movimientos/totalDepositadoFechaParticular?tipoCuenta=CAU$S",
+									"raw": "http://localhost:666/movimientos/totalDepositadoFechaParticular?tipoCuenta=CCU$S",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -631,7 +692,7 @@
 									"query": [
 										{
 											"key": "tipoCuenta",
-											"value": "CAU$S"
+											"value": "CCU$S"
 										}
 									]
 								}
@@ -644,7 +705,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:666/movimientos/depositosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-25",
+									"raw": "http://localhost:666/movimientos/depositosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-27",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -661,7 +722,7 @@
 										},
 										{
 											"key": "fechaFin",
-											"value": "2023-11-25"
+											"value": "2023-11-27"
 										}
 									]
 								}
@@ -700,7 +761,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:666/movimientos/depositosPorTipoCuenta?tipoCuenta=CA$",
+									"raw": "http://localhost:666/movimientos/depositosPorTipoCuenta?tipoCuenta=CCU$S",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -713,7 +774,7 @@
 									"query": [
 										{
 											"key": "tipoCuenta",
-											"value": "CA$"
+											"value": "CCU$S"
 										}
 									]
 								}
@@ -757,7 +818,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:666/movimientos/totalRetiradoFechaParticular?tipoCuenta=CAU$S&fechaParticular=2023-11-25",
+									"raw": "http://localhost:666/movimientos/totalRetiradoFechaParticular?tipoCuenta=CCU$S&fechaParticular=2023-11-25",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -770,7 +831,7 @@
 									"query": [
 										{
 											"key": "tipoCuenta",
-											"value": "CAU$S"
+											"value": "CCU$S"
 										},
 										{
 											"key": "fechaParticular",
@@ -813,7 +874,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "http://localhost:666/movimientos/retirosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-22",
+									"raw": "http://localhost:666/movimientos/retirosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-27",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -830,7 +891,7 @@
 										},
 										{
 											"key": "fechaFin",
-											"value": "2023-11-22"
+											"value": "2023-11-27"
 										}
 									]
 								}
@@ -973,24 +1034,24 @@
 							"formdata": [
 								{
 									"key": "ajusteMonto",
-									"value": "2900",
+									"value": "2000",
 									"type": "text"
 								},
 								{
 									"key": "motivoAjuste",
-									"value": "Extraccion mal realizada.",
+									"value": "Deposito mal realizado.",
 									"type": "text"
 								},
 								{
 									"key": "nroExtraccion",
-									"value": "4",
-									"type": "text"
-								},
-								{
-									"key": "nroDeposito",
 									"value": "3",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "nroDeposito",
+									"value": "8",
+									"type": "text"
 								}
 							]
 						},

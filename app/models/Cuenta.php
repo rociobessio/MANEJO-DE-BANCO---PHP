@@ -8,7 +8,7 @@
         public $saldo;
         public $estado;//-->Si esta activa (true), o no (false).
         public $moneda;
-        public $idUsuario;
+        public $nroDocumento;
         public $urlImagen;
 //********************************************* GETTERS *********************************************
         public function getIdCuenta(){
@@ -26,8 +26,8 @@
         public function getMoneda(){
             return $this->moneda;
         }
-        public function getIdUsuario(){
-            return $this->idUsuario;
+        public function getNroDocumento(){
+            return $this->nroDocumento;
         }
         public function getUrlImagen(){
             return $this->urlImagen;
@@ -38,9 +38,9 @@
                 $this->idCuenta = $id;
             }
         }
-        public function setIdUsuario($idUsuario){
-            if (isset($idUsuario) && is_numeric($idUsuario)){
-                $this->idUsuario = $idUsuario;
+        public function setNroDocumento($nroDocumento){
+            if (isset($nroDocumento) && is_numeric($nroDocumento)){
+                $this->nroDocumento = $nroDocumento;
             }
         }
         public function setTipoCuenta($tipoCuenta){
@@ -81,11 +81,11 @@
          */
         public static function crear($cuenta) {
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $objAccesoDB->retornarConsulta("INSERT INTO cuentas (saldo,estado,tipoCuenta,moneda,idUsuario,urlImagen)
-            VALUES (:saldo,:estado,:tipoCuenta,:moneda,:idUsuario,:urlImagen)");
+            $consulta = $objAccesoDB->retornarConsulta("INSERT INTO cuentas (saldo,estado,tipoCuenta,moneda,nroDocumento,urlImagen)
+            VALUES (:saldo,:estado,:tipoCuenta,:moneda,:nroDocumento,:urlImagen)");
             $consulta->bindValue(':saldo', $cuenta->getSaldo(), PDO::PARAM_INT);
             $consulta->bindValue(':estado', true, PDO::PARAM_BOOL);//-->Comienza activa
-            $consulta->bindValue(':idUsuario', $cuenta->getIdUsuario(), PDO::PARAM_INT);
+            $consulta->bindValue(':nroDocumento', $cuenta->getNroDocumento(), PDO::PARAM_STR);
             $consulta->bindValue(':tipoCuenta', $cuenta->getTipoCuenta(), PDO::PARAM_STR);
             $consulta->bindValue(':moneda', $cuenta->getMoneda(), PDO::PARAM_STR);
             $consulta->bindValue(':urlImagen', $cuenta->getUrlImagen(), PDO::PARAM_STR);
@@ -115,8 +115,8 @@
          */
         public static function obtenerUno($idCuenta){
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $objAccesoDB->retornarConsulta("SELECT idCuenta,apellido,nombre,tipoDocumento,numeroDocumento,saldo,
-            estado, email,tipoCuenta,moneda,idUsuario,urlImagen FROM cuentas WHERE idCuenta = :idCuenta");
+            $consulta = $objAccesoDB->retornarConsulta("SELECT idCuenta,saldo,
+            estado,tipoCuenta,moneda,nroDocumento,urlImagen FROM cuentas WHERE idCuenta = :idCuenta");
             $consulta->bindValue(':idCuenta', $idCuenta, PDO::PARAM_INT);
             $consulta->execute();
 
@@ -131,9 +131,9 @@
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $objAccesoDB->retornarConsulta("
                 SELECT c.idCuenta, u.apellido, u.nombre, u.tipoDocumento, u.numeroDocumento, c.saldo,
-                       c.estado, u.email, c.tipoCuenta, c.moneda, c.idUsuario
+                       c.estado, u.email, c.tipoCuenta, c.moneda, c.nroDocumento
                 FROM cuentas c
-                JOIN usuarios u ON c.idUsuario = u.idUsuario
+                JOIN usuarios u ON c.nroDocumento = u.numeroDocumento
                 WHERE u.email = :email AND u.numeroDocumento = :numeroDocumento
             ");
             $consulta->bindValue(':email', $email, PDO::PARAM_STR);
@@ -150,7 +150,7 @@
          */
         public static function ObtenerCuentaPorNroYTipo($nro,$tipo,$moneda){
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $objAccesoDB->retornarConsulta("SELECT idCuenta,saldo,estado,tipoCuenta,moneda,idUsuario,urlImagen
+            $consulta = $objAccesoDB->retornarConsulta("SELECT idCuenta,saldo,estado,tipoCuenta,moneda,nroDocumento,urlImagen
             FROM cuentas WHERE idCuenta = :idCuenta AND tipoCuenta = :tipoCuenta AND moneda = :moneda");
 
             $consulta->bindValue(':idCuenta', $nro, PDO::PARAM_INT);
@@ -168,14 +168,14 @@
         public static function modificar($cuenta){
             $objAccessoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $objAccessoDB->retornarConsulta("UPDATE cuentas SET saldo = :saldo, estado = :estado,
-            tipoCuenta = :tipoCuenta,moneda = :moneda, idUsuario = :idUsuario,urlImagen = :urlImagen WHERE idCuenta = :idCuenta");
+            tipoCuenta = :tipoCuenta,moneda = :moneda, nroDocumento = :nroDocumento,urlImagen = :urlImagen WHERE idCuenta = :idCuenta");
             $consulta->bindValue(':idCuenta', $cuenta->getIdCuenta(), PDO::PARAM_INT);
             $consulta->bindValue(':saldo', $cuenta->getSaldo(), PDO::PARAM_INT);
             $consulta->bindValue(':estado', $cuenta->getEstado(), PDO::PARAM_BOOL); 
             $consulta->bindValue(':tipoCuenta', $cuenta->getTipoCuenta(), PDO::PARAM_STR);
             $consulta->bindValue(':urlImagen', $cuenta->getUrlImagen(), PDO::PARAM_STR);
             $consulta->bindValue(':moneda', $cuenta->getMoneda(), PDO::PARAM_STR);
-            $consulta->bindValue(':idUsuario', $cuenta->getIdUsuario(), PDO::PARAM_INT);
+            $consulta->bindValue(':nroDocumento', $cuenta->getNroDocumento(), PDO::PARAM_INT);
             return $consulta->execute();
         }
 

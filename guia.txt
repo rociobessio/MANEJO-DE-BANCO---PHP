@@ -1,9 +1,7 @@
 Ya estan hechos los controllers y models.
 
 ->Quizas en Cuenta si va nombre,apellido,tipodoc,numerodoc y solo
-en Usuario, mail, clave y rol.
-
-->El borrar cuenta no anda tan bien
+en Usuario, mail, clave y rol. 
 
 ==========================================================================
 El punto 1B - Cuenta Alta:
@@ -17,11 +15,8 @@ Punto 2 - Consultar Cuenta:
 Punto 3 - Deposito Cuenta:
 ->[YA ESTA]
 ==========================================================================
-Punto 4 - Consulta Movimientos:
-->Son todos los movimientos realizados de depositos.
-->e- El listado de depósitos por moneda. El punto e si el listado es por
-tipo de moneda y se habia unificado moneda y tipo????
-->[YA ESTA, menos el listar por moneda]
+Punto 4 - Consulta Movimientos: 
+->[YA ESTA]
 
 ==========================================================================
 Punto 5 - Modificar Cuenta:
@@ -43,6 +38,7 @@ Punto 8 - Borrar Cuenta:
 Punto 10 - Consulta Movimientos:
 ->[YA ESTA]
 
+==========================================================================>
 Comando para levantarlo:
 php -S localhost:666 -t app
 

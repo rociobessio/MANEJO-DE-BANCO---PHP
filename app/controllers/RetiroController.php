@@ -65,8 +65,7 @@
                 if(isset($params['moneda'])){$retiro->setMoneda($params['moneda']);}
                 if(isset($params['numeroCuenta'])){$retiro->setNumeroCuenta(intval($params['numeroCuenta']));}
                 if(isset($params['importeRetiro'])){$retiro->setImporteRetiro(floatval($params['importeRetiro']));}
-                if(isset($params['fechaExtraccion'])){$retiro->setFechaExtraccion($params['fechaExtraccion']);}
-                if(isset($params['emailUsuario'])){$retiro->setEmailUsuario($params['emailUsuario']);}
+                if(isset($params['fechaExtraccion'])){$retiro->setFechaExtraccion($params['fechaExtraccion']);} 
 
                 Retiro::modificar($retiro);
                 $payload = json_encode(array("mensaje" => "El retiro se modifico correctamente!"));

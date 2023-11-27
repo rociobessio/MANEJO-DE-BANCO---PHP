@@ -18,6 +18,7 @@
                 
                 if($cuenta && $cuenta->getEstado()){//-->Existe y esta ACTIVA
                     $importeTotal = $cuenta->getSaldo() + floatval($parametros['importeDeposito']);
+                    // var_dump($importeTotal);
                     $cuenta->setSaldo($importeTotal);
                     Cuenta::modificar($cuenta);//-->Modifico la cuenta
         
@@ -33,7 +34,7 @@
                         $ruta = './ImagenesDeDepositos2023/' . $cuenta->getTipoCuenta() . "_" . $cuenta->getIdCuenta() . "_" . date_format(new DateTime(), 'Y-m-d_H-i-s') .'.jpg';
                         $files['fotoTalonDeposito']->moveTo($ruta); 
                     }
-                    var_dump($deposito);
+                    // var_dump($deposito);
                     Deposito::crear($deposito);
         
                     $payload = json_encode(array("mensaje" => "Depósito realizado correctamente."));

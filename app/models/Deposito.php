@@ -177,7 +177,7 @@
                 SELECT depositos.*
                 FROM depositos
                 INNER JOIN cuentas ON depositos.numeroCuenta = cuentas.idCuenta
-                INNER JOIN usuarios ON cuentas.idUsuario = usuarios.idUsuario
+                INNER JOIN usuarios ON cuentas.nroDocumento = usuarios.numeroDocumento
                 WHERE usuarios.email = :emailUsuario
             ");
 
@@ -208,11 +208,11 @@
                 INNER JOIN
                     cuentas ON depositos.numeroCuenta = cuentas.idCuenta
                 INNER JOIN
-                    usuarios ON cuentas.idUsuario = usuarios.idUsuario
+                    usuarios ON cuentas.nroDocumento = usuarios.numeroDocumento
                 WHERE
                     depositos.fechaDeposito BETWEEN :fechaInicio AND :fechaFin
                 ORDER BY
-                    usuarios.nombre, usuarios.apellido, depositos.fechaDeposito
+                    usuarios.nombre, usuarios.apellido, depositos.fechaDeposito;
             ");
         
             $consulta->bindParam(':fechaInicio', $fechaInicio, PDO::PARAM_STR);

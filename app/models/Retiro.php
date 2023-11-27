@@ -173,7 +173,7 @@
                 SELECT retiros.*
                 FROM retiros
                 INNER JOIN cuentas ON retiros.numeroCuenta = cuentas.idCuenta
-                INNER JOIN usuarios ON cuentas.idUsuario = usuarios.idUsuario
+                INNER JOIN usuarios ON cuentas.nroDocumento = usuarios.numeroDocumento
                 WHERE usuarios.email = :emailUsuario
             ");
         
@@ -205,7 +205,7 @@
                 INNER JOIN
                     cuentas ON retiros.numeroCuenta = cuentas.idCuenta
                 INNER JOIN
-                    usuarios ON cuentas.idUsuario = usuarios.idUsuario
+                    usuarios ON cuentas.nroDocumento = usuarios.numeroDocumento
                 WHERE
                     retiros.fechaExtraccion BETWEEN :fechaInicio AND :fechaFin
                 ORDER BY

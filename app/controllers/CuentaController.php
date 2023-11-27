@@ -19,7 +19,7 @@
             //-->1: Obtengo los datos.
             $parametros = $request->getParsedBody();
             $nroCuenta = isset($parametros['nroCuenta']) ? intval($parametros['nroCuenta']) : null;
-            $idUsuario = isset($parametros['idUsuario']) ? intval($parametros['idUsuario']) : 0;
+            $nroDocumento = isset($parametros['nroDocumento']) ? $parametros['nroDocumento'] : null;
             $files = $request->getUploadedFiles();
             // var_dump($parametros);
             
@@ -31,7 +31,7 @@
                 // var_dump($cuenta);
 
                 //-->Verifico la existencia del usuario. O el usuario es uno que ingresa y se toma por JWT?
-                $usuario = Usuario::obtenerUno(intval($parametros['idUsuario'])); 
+                $usuario = Usuario::obtenerUnoPorNroDocumento(intval($parametros['nroDocumento'])); 
 
                 if($cuenta && $cuenta->getEstado()){//-->Existe y esta activa
                     $cuenta->setSaldo($cuenta->getSaldo() + floatval($parametros['saldo']) );
@@ -43,7 +43,7 @@
                         $cuenta->setSaldo(floatval($parametros['saldo']));//-->Inicial deberia ser 0?
                         $cuenta->setTipoCuenta($parametros['tipoCuenta']);
                         $cuenta->setMoneda($parametros['moneda']);
-                        $cuenta->setIdUsuario($idUsuario);
+                        $cuenta->setNroDocumento($nroDocumento);
         
                         //-->Guardo la imagen de la cuenta
                         if (isset($files['fotoCuenta'])) {
@@ -70,7 +70,7 @@
             $val = $args['id'];
             $cuenta = Cuenta::obtenerUno(intval($val));//-->Me traigo uno.
 
-            if($cuenta !== false){$payload = json_encode($cuenta);}
+            if($cuenta !== false){$payload = json_encode(array("Cuenta Buscada:" =>$cuenta));}
             else{ $payload = json_encode(array("mensaje" => "No hay coincidencia de cuenta con ID:" . $val ." !"));}
             
             $response->getBody()->write($payload);
@@ -98,7 +98,7 @@
             if(!empty($tipoCuenta) && !empty($moneda)){
                 $cuenta = Cuenta::ObtenerCuentaPorNroYTipo(intval($id),$tipoCuenta,$moneda);
                 if($cuenta && $cuenta->getEstado()){
-                    
+                    // var_dump($cuenta);
                     //-->Queda mover la img a backups:
                     $nroImagen = rand(1, 9999);//-->Genero un rand
                     $nombreImagen = Uploader::crearPathImagenCuenta($cuenta->getTipoCuenta(), $nroImagen);
@@ -140,11 +140,11 @@
                     if(isset($params['monedaMod'])){$cuenta->setMoneda($params['monedaMod']);} 
                     if(isset($params['urlImagen'])){$cuenta->setUrlImagen($params['urlImagen']);}
                     if(isset($params['estado'])){$cuenta->setEstado($params['estado']);}
-                    if(isset($params['idUsuario'])){
-                        $usuario = Usuario::obtenerUno(intval($params['idUsuario']));
+                    if(isset($params['nroDocumento'])){
+                        $usuario = Usuario::obtenerUnoPorNroDocumento(intval($params['nroDocumento']));
 
                         //-->Se podria tambien modificar la informacion dentro de usuarios
-                        if($usuario){$cuenta->setIdUsuario($params['idUsuario']);}
+                        if($usuario){$cuenta->setNroDocumento($params['nroDocumento']);}
                         else{$payload = json_encode(array("mensaje" => "No existe ese usuario!"));}
                     }
                     if(isset($params['tipoCuentaMod'])){$cuenta->setTipoCuenta($params['tipoCuentaMod']);}

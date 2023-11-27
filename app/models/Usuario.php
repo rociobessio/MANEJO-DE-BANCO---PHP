@@ -124,6 +124,17 @@
             return $consulta->fetchObject('Usuario');
         }
 
+
+        public static function obtenerUnoPorNroDocumento($numeroDocumento){
+            $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
+            $consulta = $objAccesoDB->retornarConsulta("SELECT idUsuario,apellido,nombre,tipoDocumento,numeroDocumento,rol,
+            email,rol,clave FROM usuarios WHERE numeroDocumento = :numeroDocumento");
+            $consulta->bindValue(':numeroDocumento', $numeroDocumento, PDO::PARAM_STR);
+            $consulta->execute();
+
+            return $consulta->fetchObject('Usuario');
+        }
+
         public static function obtenerUsuarioMailClave($email,$clave){
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $objAccesoDB->retornarConsulta("SELECT idUsuario,apellido,nombre,tipoDocumento,numeroDocumento,rol,

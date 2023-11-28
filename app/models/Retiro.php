@@ -173,8 +173,7 @@
                 SELECT retiros.*
                 FROM retiros
                 INNER JOIN cuentas ON retiros.numeroCuenta = cuentas.idCuenta
-                INNER JOIN usuarios ON cuentas.nroDocumento = usuarios.numeroDocumento
-                WHERE usuarios.email = :emailUsuario
+                WHERE cuentas.email = :emailUsuario
             ");
         
             $valorEmailUsuario = $emailUsuario ?? '';
@@ -192,9 +191,9 @@
         public static function RetirosEntreFechasOrdenadosPorNombre($fechaInicio, $fechaFin) {
             $objAccessoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $objAccessoDB->retornarConsulta("
-                SELECT
-                    usuarios.nombre AS nombreUsuario,
-                    usuarios.apellido AS apellidoUsuario,
+                    SELECT
+                    cuentas.nombre AS nombreUsuario,
+                    cuentas.apellido AS apellidoUsuario,
                     retiros.idRetiro,
                     retiros.numeroCuenta,
                     retiros.tipoCuenta,
@@ -203,13 +202,11 @@
                 FROM
                     retiros
                 INNER JOIN
-                    cuentas ON retiros.numeroCuenta = cuentas.idCuenta
-                INNER JOIN
-                    usuarios ON cuentas.nroDocumento = usuarios.numeroDocumento
+                    cuentas ON retiros.numeroCuenta = cuentas.idCuenta 
                 WHERE
-                    retiros.fechaExtraccion BETWEEN :fechaInicio AND :fechaFin
+                retiros.fechaExtraccion BETWEEN :fechaInicio AND :fechaFin
                 ORDER BY
-                    usuarios.nombre, usuarios.apellido, retiros.fechaExtraccion
+                    cuentas.nombre, cuentas.apellido, retiros.numeroCuenta, retiros.fechaExtraccion;
             ");
         
             $consulta->bindParam(':fechaInicio', $fechaInicio, PDO::PARAM_STR);

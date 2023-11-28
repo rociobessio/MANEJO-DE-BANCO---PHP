@@ -4,7 +4,7 @@ use Psr\Http\Server\RequestHandlerInterface as RequestHandler;
 use Slim\Psr7\Response;
 
 
-class MWAdmin{
+class MWSupervisor{
     public function __invoke(Request $request,RequestHandler $handler) : Response {
         $header = $request->getHeaderLine(("Authorization"));
         $token = trim(explode("Bearer", $header)[1]);
@@ -14,13 +14,13 @@ class MWAdmin{
         {
             $data = AutentificadorJWT::ObtenerData($token); 
             // var_dump($data->rol == "Cliente");-->rol deberia de agregarse,puede estar tamb administrador para listar
-            if($data->rol == "Admin")
+            if($data->rol == "Supervisor")
             {
                 $response= $handler->handle($request);
             }
             else
             {
-                $response->getBody()->write(json_encode(array('Error' => "Accion reservada solamente para los Administradores.")));
+                $response->getBody()->write(json_encode(array('Error' => "Accion reservada solamente para los SUPERVISORES.")));
             }
         }
         catch(Exception $excepcion)

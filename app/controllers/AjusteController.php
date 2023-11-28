@@ -49,6 +49,10 @@
             if($ajuste !== false){$payload = json_encode($ajuste);}
             else{ $payload = json_encode(array("mensaje" => "No hay coincidencia de ajuste con ID:" . $val ." !"));}
             
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::TRAER_Ajuste);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -57,6 +61,11 @@
             $listado = Ajuste::obtenerTodos();
             $payload = json_encode(array("Ajustes" => $listado));
             $response->getBody()->write($payload);
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::TODOS_Ajustes);
+
             return $response
             ->withHeader('Content-Type','application/json');
         }
@@ -70,7 +79,10 @@
             }
             else
                 $payload = json_encode(array("mensaje" => "El ID:" . $id . " no esta asignado a ningun ajuste."));
-                
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::ELIMINAR_Ajuste);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -96,6 +108,11 @@
             else{
                 $payload = json_encode(array("mensaje" => "No hay coincidencia de ajuste con ID:" . $id ." !"));
             }
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MODIFICAR_Ajuste);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }

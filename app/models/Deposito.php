@@ -177,17 +177,17 @@
                 SELECT depositos.*
                 FROM depositos
                 INNER JOIN cuentas ON depositos.numeroCuenta = cuentas.idCuenta
-                INNER JOIN usuarios ON cuentas.nroDocumento = usuarios.numeroDocumento
-                WHERE usuarios.email = :emailUsuario
+                WHERE cuentas.email = :emailUsuario
             ");
-
+        
             $valorEmailUsuario = $emailUsuario ?? '';
-
+        
             $consulta->bindParam(':emailUsuario', $valorEmailUsuario);
             $consulta->execute();
-
+        
             return $consulta->fetchAll(PDO::FETCH_ASSOC);
         }
+        
 
         /**
          * c- El listado de depósitos entre dos fechas ordenado por nombre.
@@ -196,8 +196,8 @@
             $objAccessoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $objAccessoDB->retornarConsulta("
                 SELECT
-                    usuarios.nombre AS nombreUsuario,
-                    usuarios.apellido AS apellidoUsuario,
+                    cuentas.nombre AS nombreUsuario,
+                    cuentas.apellido AS apellidoUsuario,
                     depositos.idDeposito,
                     depositos.numeroCuenta,
                     depositos.tipoCuenta,
@@ -206,21 +206,20 @@
                 FROM
                     depositos
                 INNER JOIN
-                    cuentas ON depositos.numeroCuenta = cuentas.idCuenta
-                INNER JOIN
-                    usuarios ON cuentas.nroDocumento = usuarios.numeroDocumento
+                    cuentas ON depositos.numeroCuenta = cuentas.idCuenta 
                 WHERE
                     depositos.fechaDeposito BETWEEN :fechaInicio AND :fechaFin
                 ORDER BY
-                    usuarios.nombre, usuarios.apellido, depositos.fechaDeposito;
+                    cuentas.nombre, cuentas.apellido, depositos.numeroCuenta, depositos.fechaDeposito;
             ");
-        
+            
             $consulta->bindParam(':fechaInicio', $fechaInicio, PDO::PARAM_STR);
             $consulta->bindParam(':fechaFin', $fechaFin, PDO::PARAM_STR);
             $consulta->execute();
-        
+            
             return $consulta->fetchAll(PDO::FETCH_ASSOC);
         }
+        
 
         /**
          * El listado de depósitos por tipo de cuenta.

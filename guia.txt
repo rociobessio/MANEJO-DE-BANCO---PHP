@@ -3,7 +3,7 @@ Ya estan hechos los controllers y models.
 ->Quizas en Cuenta si va nombre,apellido,tipodoc,numerodoc y solo
 en Usuario, mail, clave y rol. 
 
-==========================================================================
+==========================================================================>
 El punto 1B - Cuenta Alta:
 ->[YA ESTA]
 
@@ -48,3 +48,24 @@ AUTENTIFICADOR JWT:
 
 2do: en el composer.json poner: "firebase/php-jwt":"4.0"
 Luego tirar en la raiz del proyecto composer update
+
+==========================================================================>
+Del segundo parcial queda hacer los ultimos dos puntos.
+
+->Ver logs.
+
+->Ver deslogueo.
+
+->Ver el recuperatorio del 2do, csv y pdfs.
+
+->Probar todos los endpoints.
+
+Se deberá generar un log de todos los accesos (no sólo login, sino cada vez que
+se intente consumir un recurso, independientemente de su resultado)
+->Se refiere a TODOS los endpoints?
+->Consultar si esta bien planteado ObtenerInfoLog ya que me ayuda a no
+repetir codigo y devuelve la funcion la info del token para luego generar
+los nuevos logs con la info del usuario.
+
+->En CuentaController falta el log de la carga, en el resto ya esta.
+->En UsuarioController falta el log

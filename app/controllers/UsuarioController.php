@@ -11,8 +11,7 @@
         public static function CargarUno($request, $response, $args){
             $parametros = $request->getParsedBody();
 
-            if(isset($parametros['nombre']) && isset($parametros['apellido']) && isset($parametros['tipoDocumento']) &&
-            isset($parametros['numeroDocumento']) && isset($parametros['email']) && isset($parametros['rol']) && isset($parametros['clave'])){
+            if(isset($parametros['email']) && isset($parametros['rol']) && isset($parametros['clave'])){
 
                 $usuario = Usuario::obtenerUsuarioMailClave($parametros['email'],$parametros['clave']);
                 if($usuario){
@@ -20,10 +19,6 @@
                 }
                 else{
                     $nuevoUsuario = new Usuario();
-                    $nuevoUsuario->setNombre($parametros['nombre']);
-                    $nuevoUsuario->setApellido($parametros['apellido']);
-                    $nuevoUsuario->setTipoDocumento($parametros['tipoDocumento']);
-                    $nuevoUsuario->setNumeroDocumento($parametros['numeroDocumento']);
                     $nuevoUsuario->setEmail($parametros['email']);
                     $nuevoUsuario->setClave($parametros['clave']);
                     $nuevoUsuario->setRol($parametros['rol']);
@@ -51,6 +46,11 @@
             if($usuario !== false){$payload = json_encode($usuario);}
             else{ $payload = json_encode(array("mensaje" => "No hay coincidencia de usuario con ID:" . $val ." !"));}
             
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::TRAER_Usuario);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -60,7 +60,12 @@
          */
         public static function TraerTodos($request, $response, $args){
             $listado = Usuario::obtenerTodos();
+            
             $payload = json_encode(array("Usuarios" => $listado));
+            
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id,"Traer Usuarios");
+            
             $response->getBody()->write($payload);
             return $response
             ->withHeader('Content-Type','application/json');
@@ -77,12 +82,13 @@
 
             $usuario = Usuario::obtenerUsuarioMailClave($email,$clave);
             if($usuario){
-                $data = array('usuario' => $usuario->getNombre(), 'nroDocumento' => $usuario->getNumeroDocumento(), 'id' =>$usuario->getIdUsuario(),
-                'rol' => $usuario->getRol());
+                $data = array('id' =>$usuario->getIdUsuario(),
+                'rol' => $usuario->getRol(),'email' => $usuario->getEmail());
                 $creacionToken = AutentificadorJWT::CrearToken($data);
                 
                 $response = $response->withHeader('Set-Cookie', 'token=' . $creacionToken['jwt']);
                 
+                Logger::CargarLog($data['id'],"Logueo");//-->Cargo el log
                 $payload = json_encode(array("mensaje" => "Usuario logueado correctamente", "token" => $creacionToken['jwt']));
             }
             else{$payload = json_encode(array("mensaje" => "Error al loguear el usuario"));}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2023 a las 21:10:17
+-- Tiempo de generación: 27-11-2023 a las 23:32:55
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -45,7 +45,8 @@ INSERT INTO `ajustes` (`idAjuste`, `motivoAjuste`, `ajusteMonto`, `numeroBuscado
 (2, 'Se genero mal el deposito.', 3000, 3, 100004, 'Deposito'),
 (3, 'La extraccion fue hecha incorrectamente.', 1250, 5, 100005, 'Retiro'),
 (4, 'Extraccion mal realizada.', 2900, 4, 100006, 'Retiro'),
-(5, 'Extraccion mal realizada.', 1000, 3, 100004, 'Retiro');
+(5, 'Extraccion mal realizada.', 1000, 3, 100004, 'Retiro'),
+(6, 'Deposito mal realizado.', 2000, 8, 100007, 'Deposito');
 
 -- --------------------------------------------------------
 
@@ -60,21 +61,26 @@ CREATE TABLE `cuentas` (
   `saldo` float NOT NULL,
   `estado` tinyint(1) NOT NULL,
   `urlImagen` varchar(200) NOT NULL,
-  `nroDocumento` varchar(25) NOT NULL
+  `nroDocumento` varchar(25) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellido` varchar(100) NOT NULL,
+  `tipoDocumento` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Contendra la info de las cuentas existentes';
 
 --
 -- Volcado de datos para la tabla `cuentas`
 --
 
-INSERT INTO `cuentas` (`idCuenta`, `tipoCuenta`, `moneda`, `saldo`, `estado`, `urlImagen`, `nroDocumento`) VALUES
-(100001, 'CA$', '$', 5000, 0, './ImagenesDeCuentas/2023/CA$_2594.jpg', '278193102'),
-(100002, 'CAU$S', 'U$S', 18500, 0, './ImagenesDeCuentas/2023/CAU$S_3220.jpg', '45013997'),
-(100003, 'CCU$S', 'U$S', 8900, 1, './ImagenesDeCuentas/2023/CCU$S_3574.jpg', '	 3102930123'),
-(100004, 'CC$', '$', 35000, 1, './ImagenesDeCuentas/2023/CC$_7205.jpg', '	 44789123'),
-(100005, 'CA$', '$', 14250, 1, './ImagenesDeCuentas/2023/CA$_1872.jpg', '	 44789123'),
-(100006, 'CAU$S', 'U$S', 56000, 1, './ImagenesDeCuentas/2023/CAU$S_8555.jpg', '348291032'),
-(100007, 'CCU$S', 'U$S', 100000, 1, './ImagenesDeCuentas/2023/CCU$S_565.jpg', '37182031');
+INSERT INTO `cuentas` (`idCuenta`, `tipoCuenta`, `moneda`, `saldo`, `estado`, `urlImagen`, `nroDocumento`, `nombre`, `apellido`, `tipoDocumento`, `email`) VALUES
+(100001, 'CA$', '$', 5000, 0, './ImagenesDeCuentas/2023/CA$_2594.jpg', '278193102', '', '', '', ''),
+(100002, 'CAU$S', 'U$S', 18500, 0, './ImagenesDeCuentas/2023/CAU$S_3220.jpg', '45013997', '', '', '', ''),
+(100003, 'CCU$S', 'U$S', 8900, 1, './ImagenesDeCuentas/2023/CCU$S_3574.jpg', '	 3102930123', '', '', '', ''),
+(100004, 'CC$', '$', 35000, 1, './ImagenesDeCuentas/2023/CC$_7205.jpg', '	 44789123', '', '', '', ''),
+(100005, 'CA$', '$', 14250, 1, './ImagenesDeCuentas/2023/CA$_1872.jpg', '	 44789123', '', '', '', ''),
+(100006, 'CAU$S', 'U$S', 58000, 1, './ImagenesDeCuentas/2023/CAU$S_8555.jpg', '348291032', '', '', '', ''),
+(100007, 'CCU$S', 'U$S', 98000, 0, './ImagenesDeCuentas/2023/CCU$S_565.jpg', '37182031', '', '', '', ''),
+(100008, 'CCU$S', 'U$S', 100000, 1, './ImagenesDeCuentas/2023/CCU$S_7383.jpg', '37182031', 'rocio', 'bessio', 'DNI', 'rociobessio@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -103,7 +109,8 @@ INSERT INTO `depositos` (`idDeposito`, `numeroCuenta`, `tipoCuenta`, `importe`, 
 (5, 100002, 'CAU$S', 18000, '2023-11-25 00:00:00', 'U$S'),
 (6, 100006, 'CAU$S', 12000, '2023-11-26 00:00:00', 'U$S'),
 (7, 100007, 'CCU$S', 2000, '2023-11-27 00:00:00', 'U$S'),
-(8, 100007, 'CCU$S', 2000, '2023-11-27 00:00:00', 'U$S');
+(8, 100007, 'CCU$S', 2000, '2023-11-27 00:00:00', 'U$S'),
+(9, 100006, 'CAU$S', 2000, '2023-11-27 00:00:00', 'U$S');
 
 -- --------------------------------------------------------
 
@@ -141,10 +148,6 @@ INSERT INTO `retiros` (`idRetiro`, `numeroCuenta`, `tipoCuenta`, `importeRetiro`
 
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL,
-  `nombre` varchar(70) NOT NULL,
-  `apellido` varchar(70) NOT NULL,
-  `tipoDocumento` varchar(10) NOT NULL,
-  `numeroDocumento` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
   `rol` varchar(15) NOT NULL,
   `clave` varchar(50) NOT NULL
@@ -154,14 +157,17 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`idUsuario`, `nombre`, `apellido`, `tipoDocumento`, `numeroDocumento`, `email`, `rol`, `clave`) VALUES
-(1, 'Rocio', 'Bessio', 'DNI', '45013997', 'rocibessio@gmail.com', 'Cliente', '123rocio'),
-(2, 'Admin', 'Admin', 'DNI', '0101010101', 'admin@gmail.com', 'Admin', '123admin'),
-(3, 'Carlos', 'Garcia', 'DNI', '278193102', 'charlygarcia@yahoo.com.ar', 'Cliente', '123charly'),
-(4, 'Josefina', 'Martinez', 'LC', '3102930123', 'josemart@yahoo.com.ar', 'Cliente', '123josefina'),
-(5, 'Martin', 'Ramirez', 'LC', '44789123', 'martinrami@gmail.com', 'Cliente', '123martin'),
-(6, 'Sabrina', 'Richeri', 'DNI', '348291032', 'sabririch@gmail.com', 'Cliente', '123sabrina'),
-(7, 'Miriam', 'Bridger', 'DNI', '37182031', 'mirbrid@gmail.com', 'Cliente', '123miriam');
+INSERT INTO `usuarios` (`idUsuario`, `email`, `rol`, `clave`) VALUES
+(1, 'rocibessio@gmail.com', 'Operador', '123rocio'),
+(2, 'admin@gmail.com', 'Operador', '123admin'),
+(3, 'charlygarcia@yahoo.com.ar', 'Supervisor', '123charly'),
+(4, 'josemart@yahoo.com.ar', 'Supervisor', '123josefina'),
+(5, 'martinrami@gmail.com', 'Cajero', '123martin'),
+(6, 'sabririch@gmail.com', 'Cajero', '123sabrina'),
+(7, 'mirbrid@gmail.com', 'Operador', '123miriam'),
+(8, 'niki@yahoo.com.ar', 'Cajero', '123nicolas'),
+(9, 'esteban@yahoo.com.ar', 'Supervisor', '123esteban'),
+(10, 'val@gmail.com', 'Supervisor', '123valentina');
 
 --
 -- Índices para tablas volcadas
@@ -205,19 +211,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ajustes`
 --
 ALTER TABLE `ajustes`
-  MODIFY `idAjuste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idAjuste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `cuentas`
 --
 ALTER TABLE `cuentas`
-  MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100008;
+  MODIFY `idCuenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100009;
 
 --
 -- AUTO_INCREMENT de la tabla `depositos`
 --
 ALTER TABLE `depositos`
-  MODIFY `idDeposito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idDeposito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `retiros`
@@ -229,7 +235,7 @@ ALTER TABLE `retiros`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -68,6 +68,11 @@
             else{
                 $payload = json_encode(array("mensaje" => "No hay coincidencia de deposito con ID:" . $id ." !"));
             }
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MODIFICAR_Deposito);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -79,6 +84,10 @@
             if($deposito !== false){$payload = json_encode($deposito);}
             else{ $payload = json_encode(array("mensaje" => "No hay coincidencia de deposito con ID:" . $val ." !"));}
             
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::TRAER_Deposito);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -86,6 +95,11 @@
         public static function TraerTodos($request, $response, $args){
             $listado = Deposito::obtenerTodos();
             $payload = json_encode(array("Depositos" => $listado));
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::TODOS_Depositos);
+
             $response->getBody()->write($payload);
             return $response
             ->withHeader('Content-Type','application/json');
@@ -101,6 +115,10 @@
             else
                 $payload = json_encode(array("mensaje" => "El ID:" . $id . " no esta asignado a ningun deposito."));
                 
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::ELIMINAR_Deposito);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -125,6 +143,10 @@
             else{
                 $payload = json_encode(array("mensaje" => "Se debe ingresar el tipo de cuenta."));
             }
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_TOTAL_DEPOSITADO_FECHA);
         
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
@@ -142,6 +164,10 @@
             } else {
                 $payload = json_encode(array("mensaje" => "Se debe ingresar el mail del usuario."));
             }
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_DEPOSITADO_USUARIO);
         
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
@@ -162,6 +188,10 @@
                 $payload = json_encode(array("mensaje" => "Se deben ingresar las fechas."));
             }
         
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_DEPOSITOS_ENTRE_FECHAS_SORT_NOMBRE);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -179,6 +209,11 @@
             else{
                 $payload = json_encode(array("mensaje" => "Se deben ingresar el tipo de cuenta."));
             }
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_DEPOSITOS_TIPO_CUENTA);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -191,7 +226,12 @@
             }
             else{
                 $payload = json_encode(array("mensaje" => "Se deben ingresar la moneda."));
-            }
+            } 
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_DEPOSITOS_POR_MONEDA);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }

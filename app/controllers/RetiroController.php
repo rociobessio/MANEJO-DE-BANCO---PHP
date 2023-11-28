@@ -125,6 +125,10 @@
             else{
                 $payload = json_encode(array("mensaje" => "Se debe ingresar el tipo de cuenta."));
             }
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_TOTAL_RETIRO_FECHA);
         
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
@@ -139,6 +143,9 @@
             } else {
                 $payload = json_encode(array("mensaje" => "Se debe ingresar el mail del usuario."));
             }
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_RETIROS_USUARIO);
         
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
@@ -158,6 +165,10 @@
             else{
                 $payload = json_encode(array("mensaje" => "Se deben ingresar las fechas."));
             }
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_RETIROS_ENTRE_FECHAS_SORT_NOMBRE);
         
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
@@ -176,6 +187,10 @@
             else{
                 $payload = json_encode(array("mensaje" => "Se deben ingresar el tipo de cuenta."));
             }
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_RETIROS_TIPO_CUENTA);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -195,6 +210,10 @@
             } else {
                 $payload = json_encode(array("mensaje" => "Se debe ingresar el mail del usuario."));
             }
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_RETIROS_DEPOSITOS_USUARIO);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -211,6 +230,11 @@
             else{
                 $payload = json_encode(array("mensaje" => "Se deben ingresar la moneda."));
             }
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MOVIMIENTO_RETIROS_POR_MONEDA);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }

@@ -10,6 +10,11 @@
         public $moneda;
         public $nroDocumento;
         public $urlImagen;
+        public $nombre;
+        public $apellido;
+        public $tipoDocumento;
+        public $numeroDocumento;
+        public $email;
 //********************************************* GETTERS *********************************************
         public function getIdCuenta(){
             return $this->idCuenta;
@@ -31,6 +36,21 @@
         }
         public function getUrlImagen(){
             return $this->urlImagen;
+        }
+        public function getNombre(){
+            return $this->nombre;
+        }
+        public function getApellido(){
+            return $this->apellido;
+        }
+        public function getTipoDocumento(){
+            return $this->tipoDocumento;
+        }
+        public function getNumeroDocumento(){
+            return $this->numeroDocumento;
+        }
+        public function getEmail(){
+            return $this->email;
         }
 //********************************************* SETTERS *********************************************
         public function setID($id){
@@ -68,6 +88,35 @@
                 $this->urlImagen = $urlImagen;
             }
         }
+        public function setNombre($nombre){
+            if(isset($nombre) && !empty($nombre)) {
+                $this->nombre = $nombre;
+            }
+        }
+        public function setApellido($apellido){
+            if(isset($apellido) && !empty($apellido)) {
+                $this->apellido = $apellido;
+            }
+        }
+        public function setTipoDocumento($tipoDocumento){
+            if(isset($tipoDocumento) && !empty($tipoDocumento) && self::validarTipoDocumento($tipoDocumento)) {
+                $this->tipoDocumento = $tipoDocumento;
+            }
+            else{
+                echo 'tipo documento no valido se aceptan [DNI,LE,LC,CI], reingrese!<br>';
+                exit;
+            }
+        } 
+        public function setNumeroDocumento($numeroDocumento){
+            if(isset($numeroDocumento) && !empty($numeroDocumento)) {
+                $this->numeroDocumento = $numeroDocumento;
+            }
+        }
+        public function setEmail($email){
+            if(isset($email) && !empty($email)) {
+                $this->email = $email;
+            }
+        }
 //********************************************* FUNCIONES *********************************************
         public function verificarSaldo($saldo){
             return $this->getSaldo() > $saldo;
@@ -81,8 +130,15 @@
          */
         public static function crear($cuenta) {
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $objAccesoDB->retornarConsulta("INSERT INTO cuentas (saldo,estado,tipoCuenta,moneda,nroDocumento,urlImagen)
-            VALUES (:saldo,:estado,:tipoCuenta,:moneda,:nroDocumento,:urlImagen)");
+            $consulta = $objAccesoDB->retornarConsulta("INSERT INTO cuentas (nombre, apellido, tipoDocumento, email, saldo, estado, tipoCuenta, moneda, nroDocumento, urlImagen)
+            VALUES (:nombre, :apellido, :tipoDocumento, :email, :saldo, :estado, :tipoCuenta, :moneda, :nroDocumento, :urlImagen)");
+            
+            $consulta->bindValue(':nombre', $cuenta->getNombre(), PDO::PARAM_STR);
+            $consulta->bindValue(':apellido', $cuenta->getApellido(), PDO::PARAM_STR);
+            $consulta->bindValue(':tipoDocumento', $cuenta->getTipoDocumento(), PDO::PARAM_STR);
+            $consulta->bindValue(':nroDocumento', $cuenta->getNroDocumento(), PDO::PARAM_STR);
+
+            $consulta->bindValue(':email', $cuenta->getEmail(), PDO::PARAM_STR);
             $consulta->bindValue(':saldo', $cuenta->getSaldo(), PDO::PARAM_INT);
             $consulta->bindValue(':estado', true, PDO::PARAM_BOOL);//-->Comienza activa
             $consulta->bindValue(':nroDocumento', $cuenta->getNroDocumento(), PDO::PARAM_STR);
@@ -104,6 +160,22 @@
             $consulta->execute();
             return $consulta->fetchAll(PDO::FETCH_CLASS, 'Cuenta');
         }
+        /**
+         * Me permite validar un tipo de documeto
+         * argentino:
+         * Documento Nacional de Identidad -D.N.I. 
+         * Libreta Cívica - L.C. 
+         * Libreta de Enrolamiento - L.E. 
+         * Cédula de Identidad -C.I.
+         */
+        private static function validarTipoDocumento($tipo){
+            $tipos = ["DNI","LC","LE","CI"];
+            if(in_array(strtoupper($tipo),$tipos))
+                return true;
+            else
+                return false;
+        }
+
 
         /**
          * Me permitira traerme un unico objeto
@@ -116,7 +188,7 @@
         public static function obtenerUno($idCuenta){
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $objAccesoDB->retornarConsulta("SELECT idCuenta,saldo,
-            estado,tipoCuenta,moneda,nroDocumento,urlImagen FROM cuentas WHERE idCuenta = :idCuenta");
+            estado,tipoCuenta,moneda,nroDocumento,urlImagen,nombre,apellido,email,tipoDocumento FROM cuentas WHERE idCuenta = :idCuenta");
             $consulta->bindValue(':idCuenta', $idCuenta, PDO::PARAM_INT);
             $consulta->execute();
 
@@ -130,11 +202,10 @@
         public static function obtenerCuentaPorUsuario($email, $numeroDocumento) {
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $objAccesoDB->retornarConsulta("
-                SELECT c.idCuenta, u.apellido, u.nombre, u.tipoDocumento, u.numeroDocumento, c.saldo,
-                       c.estado, u.email, c.tipoCuenta, c.moneda, c.nroDocumento
-                FROM cuentas c
-                JOIN usuarios u ON c.nroDocumento = u.numeroDocumento
-                WHERE u.email = :email AND u.numeroDocumento = :numeroDocumento
+                SELECT idCuenta, apellido, nombre, tipoDocumento, numeroDocumento, saldo,
+                       estado, email, tipoCuenta, moneda, nroDocumento
+                FROM 
+                WHERE email = :email AND numeroDocumento = :numeroDocumento
             ");
             $consulta->bindValue(':email', $email, PDO::PARAM_STR);
             $consulta->bindValue(':numeroDocumento', $numeroDocumento, PDO::PARAM_STR);

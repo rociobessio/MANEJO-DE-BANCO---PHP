@@ -2,6 +2,7 @@
 
     require_once "./interfaces/IApiUsable.php";
     include_once "./models/Cuenta.php";
+    include_once "./models/AccionesLogs.php";
     include_once "./models/Uploader.php";
     require_once "./middlewares/AutentificadorJWT.php";
 
@@ -30,33 +31,31 @@
                 $cuenta = Cuenta::ObtenerCuentaPorNroYTipo(intval($nroCuenta),$parametros['tipoCuenta'],$parametros['moneda']);
                 // var_dump($cuenta);
 
-                //-->Verifico la existencia del usuario. O el usuario es uno que ingresa y se toma por JWT?
-                $usuario = Usuario::obtenerUnoPorNroDocumento(intval($parametros['nroDocumento'])); 
-
                 if($cuenta && $cuenta->getEstado()){//-->Existe y esta activa
                     $cuenta->setSaldo($cuenta->getSaldo() + floatval($parametros['saldo']) );
                     Cuenta::modificar($cuenta);
                     $payload = json_encode(array("mensaje" => "La cuenta se ha modificado correctamente!"));     
-                }else{//-->Cuenta nueva
-                    if($usuario){
-                        $cuenta = new Cuenta();
-                        $cuenta->setSaldo(floatval($parametros['saldo']));//-->Inicial deberia ser 0?
-                        $cuenta->setTipoCuenta($parametros['tipoCuenta']);
-                        $cuenta->setMoneda($parametros['moneda']);
-                        $cuenta->setNroDocumento($nroDocumento);
+                }else{//-->Cuenta nueva 
+                    $cuenta = new Cuenta();
+                    $cuenta->setEmail($parametros['email']);
+                    $cuenta->setTipoDocumento($parametros['tipoDocumento']);
+                    $cuenta->setNombre($parametros['nombre']);
+                    $cuenta->setApellido($parametros['apellido']);
+                    $cuenta->setSaldo(floatval($parametros['saldo']));//-->Inicial deberia ser 0?
+                    $cuenta->setTipoCuenta($parametros['tipoCuenta']);
+                    $cuenta->setMoneda($parametros['moneda']);
+                    $cuenta->setNroDocumento($nroDocumento);
         
-                        //-->Guardo la imagen de la cuenta
-                        if (isset($files['fotoCuenta'])) {
-                            $nroImagen = rand(1, 9999);//-->Genero un rand
-                            $ruta = './ImagenesDeCuentas/2023/' . $cuenta->getTipoCuenta() . "_" .  $nroImagen .'.jpg';
-                            $files['fotoCuenta']->moveTo($ruta); 
-                            $cuenta->setUrlImagen($ruta);
-                        }
-                        
-                        Cuenta::crear($cuenta);
-                        $payload = json_encode(array("mensaje" => "La cuenta se ha creado correctamente!"));
+                    //-->Guardo la imagen de la cuenta
+                    if (isset($files['fotoCuenta'])) {
+                        $nroImagen = rand(1, 9999);//-->Genero un rand
+                        $ruta = './ImagenesDeCuentas/2023/' . $cuenta->getTipoCuenta() . "_" .  $nroImagen .'.jpg';
+                        $files['fotoCuenta']->moveTo($ruta); 
+                        $cuenta->setUrlImagen($ruta);
                     }
-                    else{$payload = json_encode(array("mensaje" => "El usuario al cual se le quiere asignar la cuenta no existe!"));}
+                    
+                    Cuenta::crear($cuenta);
+                    $payload = json_encode(array("mensaje" => "La cuenta se ha creado correctamente!")); 
                 }
             }
             else{
@@ -73,6 +72,10 @@
             if($cuenta !== false){$payload = json_encode(array("Cuenta Buscada:" =>$cuenta));}
             else{ $payload = json_encode(array("mensaje" => "No hay coincidencia de cuenta con ID:" . $val ." !"));}
             
+            //-->Cargo el log:
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id,AccionesLogs::TRAER_Cuenta);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -80,6 +83,12 @@
         public static function TraerTodos($request, $response, $args){
             $listado = Cuenta::obtenerTodos();
             $payload = json_encode(array("Cuentas" => $listado));
+
+            //-->Info log accion y carga:
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id,AccionesLogs::TODOS_Cuentas);
+
+
             $response->getBody()->write($payload);
             return $response
             ->withHeader('Content-Type','application/json');
@@ -117,6 +126,12 @@
             }
             else
                 $payload = json_encode(array("mensaje" => "Debe de ingresar tambien el tipo de cuenta y la moneda!"));
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::BAJA_Cuenta);
+
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -157,6 +172,11 @@
                 }
             }
             else{$payload = json_encode(array("mensaje" => "Se debe de ingresar el tipo y numero de cuenta para seguir!"));}
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::MODIFICAR_Cuenta);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
@@ -169,6 +189,10 @@
                 $payload =  json_encode(['resultado' => $mensaje]);
             }
             else{$payload = json_encode(array("mensaje" => "Se debe de ingresar el tipo y numero de cuenta para seguir!"));}
+
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::CONSULTAR_Cuenta);
 
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');

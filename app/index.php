@@ -109,6 +109,10 @@ $app->group('/login', function (RouteCollectorProxy $group) {
     $group->get('[/]', \Logger::class . '::Desloguear');
 });
 
+$app->group('/logs', function (RouteCollectorProxy $group) {
+    $group->get('/acciones', \UsuarioController::class . '::TraerTodosLogsAcciones');
+    $group->get('/transacciones', \UsuarioController::class . '::TraerTodosLogsTransacciones');
+});
 
 $app->get('[/]', function (Request $request, Response $response) {
     $payload = json_encode(array("SP" => "Banco"));

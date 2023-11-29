@@ -76,4 +76,18 @@
             $data = AutentificadorJWT::ObtenerData($token);
             return $data;
         }
+
+        public static function ObtenerLogsAccesos(){
+            $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
+            $consulta = $objAccesoDB->retornarConsulta("SELECT * FROM logsacceso");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_CLASS, 'stdClass');
+        }
+
+        public static function ObtenerLogsTransacciones(){
+            $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
+            $consulta = $objAccesoDB->retornarConsulta("SELECT * FROM logstransacciones");
+            $consulta->execute();
+            return $consulta->fetchAll(PDO::FETCH_CLASS, 'stdClass');
+        }
     }

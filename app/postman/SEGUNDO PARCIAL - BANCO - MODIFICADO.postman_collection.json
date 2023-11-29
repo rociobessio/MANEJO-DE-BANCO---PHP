@@ -10,7 +10,7 @@
 			"name": "LOGIN",
 			"item": [
 				{
-					"name": "LOGUEAR CLIENTE",
+					"name": "OPERADOR",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -19,12 +19,12 @@
 							"formdata": [
 								{
 									"key": "emailUsuario",
-									"value": "josemart@yahoo.com.ar",
+									"value": "rocibessio@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "clave",
-									"value": "123josefina",
+									"value": "123rocio",
 									"type": "text"
 								}
 							]
@@ -45,7 +45,7 @@
 					"response": []
 				},
 				{
-					"name": "LOGUEAR ADMIN",
+					"name": "SUPERVISOR",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -54,16 +54,77 @@
 							"formdata": [
 								{
 									"key": "emailUsuario",
-									"value": "admin@gmail.com",
+									"value": "esteban@yahoo.com.ar",
 									"type": "text"
 								},
 								{
 									"key": "clave",
-									"value": "123admin",
+									"value": "123esteban",
 									"type": "text"
 								}
 							]
 						},
+						"url": {
+							"raw": "http://localhost:666/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CAJERO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "emailUsuario",
+									"value": "martinrami@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "123martin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGOUT",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/login/",
 							"protocol": "http",
@@ -91,7 +152,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMTQ0NzcsImV4cCI6MTcwMTE3NDQ3NywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsidXN1YXJpbyI6IkFkbWluIiwibnJvRG9jdW1lbnRvIjoiMDEwMTAxMDEwMSIsImlkIjoyLCJyb2wiOiJBZG1pbiJ9LCJhcHAiOiJTUCBCYW5jbyJ9._5n_5Pjyg9tcVJ3J6avDS4VwfXa4ept46e62wdZB1nc",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODI3MzUsImV4cCI6MTcwMTI0MjczNSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PllOXh6-hYfsS57gIYGiON3splbYhj6gNAx7MTaoJAU",
 								"type": "text"
 							}
 						],
@@ -117,7 +178,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMTQ0NzcsImV4cCI6MTcwMTE3NDQ3NywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsidXN1YXJpbyI6IkFkbWluIiwibnJvRG9jdW1lbnRvIjoiMDEwMTAxMDEwMSIsImlkIjoyLCJyb2wiOiJBZG1pbiJ9LCJhcHAiOiJTUCBCYW5jbyJ9._5n_5Pjyg9tcVJ3J6avDS4VwfXa4ept46e62wdZB1nc",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODI3MzUsImV4cCI6MTcwMTI0MjczNSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PllOXh6-hYfsS57gIYGiON3splbYhj6gNAx7MTaoJAU",
 								"type": "text"
 							}
 						],
@@ -126,12 +187,12 @@
 							"formdata": [
 								{
 									"key": "nombre",
-									"value": "Miriam",
+									"value": "Valentina",
 									"type": "text"
 								},
 								{
 									"key": "apellido",
-									"value": "Bridger",
+									"value": "Rodriguez",
 									"type": "text"
 								},
 								{
@@ -141,7 +202,7 @@
 								},
 								{
 									"key": "numeroDocumento",
-									"value": "37182031",
+									"value": "27891293",
 									"type": "text"
 								},
 								{
@@ -151,12 +212,12 @@
 								},
 								{
 									"key": "email",
-									"value": "mirbrid@gmail.com",
+									"value": "val@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "clave",
-									"value": "123miriam",
+									"value": "123valentina",
 									"type": "text"
 								}
 							]
@@ -180,9 +241,15 @@
 					"name": "LISTAR UNO",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODI3MzUsImV4cCI6MTcwMTI0MjczNSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PllOXh6-hYfsS57gIYGiON3splbYhj6gNAx7MTaoJAU",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:666/usuario/2",
+							"raw": "http://localhost:666/usuario/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -190,7 +257,7 @@
 							"port": "666",
 							"path": [
 								"usuario",
-								"2"
+								"10"
 							]
 						}
 					},
@@ -205,7 +272,13 @@
 					"name": "LISTAR CUENTAS",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/cuenta/",
 							"protocol": "http",
@@ -225,9 +298,15 @@
 					"name": "LISTAR UNO",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:666/cuenta/100006",
+							"raw": "http://localhost:666/cuenta/100008",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -235,7 +314,7 @@
 							"port": "666",
 							"path": [
 								"cuenta",
-								"100006"
+								"100008"
 							]
 						}
 					},
@@ -245,7 +324,13 @@
 					"name": "CARGAR CUENTA",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjYyNDksImV4cCI6MTcwMTE4NjI0OSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.ujxg44xyO6wuqcXZQDC80THSUFx7Gzr3uv-SfJRSqlg",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
@@ -279,6 +364,26 @@
 									"value": "4",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "tipoDocumento",
+									"value": "DNI",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rociobessio@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "nombre",
+									"value": "rocio",
+									"type": "text"
+								},
+								{
+									"key": "apellido",
+									"value": "bessio",
+									"type": "text"
 								}
 							]
 						},
@@ -301,7 +406,13 @@
 					"name": "MODIFICAR CUENTA",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjYyNDksImV4cCI6MTcwMTE4NjI0OSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.ujxg44xyO6wuqcXZQDC80THSUFx7Gzr3uv-SfJRSqlg",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -341,9 +452,15 @@
 					"name": "BAJA DE CUENTA",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODUwNDMsImV4cCI6MTcwMTI0NTA0MywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.1kur1C93GgIb8DiVEVz7zdM2lxdAwS8XFlRSRaw0q_M",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "http://localhost:666/cuenta/100002/CAU$S/U$S",
+							"raw": "http://localhost:666/cuenta/100004/CC$/$",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -351,9 +468,9 @@
 							"port": "666",
 							"path": [
 								"cuenta",
-								"100002",
-								"CAU$S",
-								"U$S"
+								"100004",
+								"CC$",
+								"$"
 							]
 						}
 					},
@@ -363,7 +480,13 @@
 					"name": "CONSULTAR CUENTA",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/cuenta/consultarCuenta/100007/CCU$S",
 							"protocol": "http",
@@ -390,7 +513,13 @@
 					"name": "LISTAR DEPOSITOS",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTk3NzgsImV4cCI6MTcwMTI3OTc3OCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.OC2di81zAN4eoEm-lkcwTkLWvxTF2MZRdl8_6pPDXmY",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/deposito/",
 							"protocol": "http",
@@ -410,7 +539,13 @@
 					"name": "TRAER DEPOSITO",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjQyMDksImV4cCI6MTcwMTE4NDIwOSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.LcxNmj-fwiXLbK0SIEwsWP9MxTGDWusF4Vz25avU5QI",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/deposito/6",
 							"protocol": "http",
@@ -430,33 +565,39 @@
 					"name": "CARGAR DEPOSITO",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTk4MDQsImV4cCI6MTcwMTI3OTgwNCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.HsnVHslEkTJKENBoHRmxWKFJtPYAq1yBKXCc1yzURbA",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "nroCuenta",
-									"value": "100007",
+									"value": "100005",
 									"type": "text"
 								},
 								{
 									"key": "tipoCuenta",
-									"value": "CCU$S",
+									"value": "CA$",
 									"type": "text"
 								},
 								{
 									"key": "importeDeposito",
-									"value": "2000",
+									"value": "10000",
 									"type": "text"
 								},
 								{
 									"key": "fotoTalonDeposito",
 									"type": "file",
-									"src": "/C:/Users/Rocio/Downloads/cheque-bancario-en-blanco-plantilla-de-comprobación-escritorio-personal-con-campo-vacío-para-rellenar-billete-diseño-monetario-171298530.webp"
+									"src": "/C:/Users/Rocio/Downloads/images (2).jpeg"
 								},
 								{
 									"key": "moneda",
-									"value": "U$S",
+									"value": "$",
 									"type": "text"
 								}
 							]
@@ -534,7 +675,13 @@
 					"name": "LISTAR RETIROS",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTk4MDQsImV4cCI6MTcwMTI3OTgwNCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.HsnVHslEkTJKENBoHRmxWKFJtPYAq1yBKXCc1yzURbA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/retiro/",
 							"protocol": "http",
@@ -574,13 +721,19 @@
 					"name": "CARGAR RETIRO",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTk4MDQsImV4cCI6MTcwMTI3OTgwNCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.HsnVHslEkTJKENBoHRmxWKFJtPYAq1yBKXCc1yzURbA",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "nroCuenta",
-									"value": "100007",
+									"value": "100003",
 									"type": "text"
 								},
 								{
@@ -590,7 +743,7 @@
 								},
 								{
 									"key": "importeRetiro",
-									"value": "4000",
+									"value": "1000",
 									"type": "text"
 								},
 								{
@@ -675,9 +828,22 @@
 					"item": [
 						{
 							"name": "TOTAL DEPOSITOS FECHA PARTICULAR",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
 								"url": {
 									"raw": "http://localhost:666/movimientos/totalDepositadoFechaParticular?tipoCuenta=CCU$S",
 									"protocol": "http",
@@ -703,9 +869,15 @@
 							"name": "DEPOSITOS ENTRE FECHAS ORDENADOS X NOMBRE",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
 								"url": {
-									"raw": "http://localhost:666/movimientos/depositosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-27",
+									"raw": "http://localhost:666/movimientos/depositosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-28",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -722,7 +894,7 @@
 										},
 										{
 											"key": "fechaFin",
-											"value": "2023-11-27"
+											"value": "2023-11-28"
 										}
 									]
 								}
@@ -731,11 +903,24 @@
 						},
 						{
 							"name": "DEPOSITOS POR USUARIO",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
 								"url": {
-									"raw": "http://localhost:666/movimientos/depositosPorUsuario?emailUsuario=rocibessio@gmail.com",
+									"raw": "http://localhost:666/movimientos/depositosPorUsuario?emailUsuario=mariano@gmail.com",
 									"protocol": "http",
 									"host": [
 										"localhost"
@@ -748,7 +933,7 @@
 									"query": [
 										{
 											"key": "emailUsuario",
-											"value": "rocibessio@gmail.com"
+											"value": "mariano@gmail.com"
 										}
 									]
 								}
@@ -759,7 +944,13 @@
 							"name": "DEPOSITOS POR TIPO CUENTA",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "http://localhost:666/movimientos/depositosPorTipoCuenta?tipoCuenta=CCU$S",
 									"protocol": "http",
@@ -785,7 +976,13 @@
 							"name": "LISTAR DEPOSITOS POR MONEDA",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "http://localhost:666/movimientos/depositosPorMoneda?moneda=U$S",
 									"protocol": "http",
@@ -816,7 +1013,13 @@
 							"name": "TOTAL RETIRADO FECHA PARTICULAR",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "http://localhost:666/movimientos/totalRetiradoFechaParticular?tipoCuenta=CCU$S&fechaParticular=2023-11-25",
 									"protocol": "http",
@@ -846,7 +1049,13 @@
 							"name": "RETIRO POR USUARIO",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "http://localhost:666/movimientos/retirosPorUsuario?emailUsuario=rocibessio@gmail.com",
 									"protocol": "http",
@@ -872,7 +1081,13 @@
 							"name": "RETIROS ENTRE FECHAS SORT NOMBRE",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjQ5MDYsImV4cCI6MTcwMTE4NDkwNiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.6bMFyNsBHhpj5ZqogQ-MHwPBU6azvsB0qo3OPX325rI",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "http://localhost:666/movimientos/retirosEntreFechasOrdenNombre?fechaInicio=2023-11-22&fechaFin=2023-11-27",
 									"protocol": "http",
@@ -902,7 +1117,13 @@
 							"name": "RETIROS POR TIPO CUENTA",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "http://localhost:666/movimientos/retirosPorTipoCuenta?tipoCuenta=CA$",
 									"protocol": "http",
@@ -928,7 +1149,13 @@
 							"name": "RETIROS POR MONEDA",
 							"request": {
 								"method": "GET",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "http://localhost:666/movimientos/retirosPorMoneda?moneda=U$S",
 									"protocol": "http",
@@ -957,7 +1184,13 @@
 					"name": "DEPOSITOS & RETIROS POR USUARIO",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/movimientos/retirosYDepositosPorUsuario?emailUsuario=rocibessio@gmail.com",
 							"protocol": "http",
@@ -988,7 +1221,13 @@
 					"name": "LISTAR AJUSTES",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/ajuste/",
 							"protocol": "http",
@@ -1008,7 +1247,13 @@
 					"name": "TRAER UNO",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjUzOTAsImV4cCI6MTcwMTE4NTM5MCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PXz7-NqLrcN0ZmG5bdgPPN_E9L-qSXRCzsvwwERLkhA",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/ajuste/1",
 							"protocol": "http",
@@ -1028,30 +1273,36 @@
 					"name": "CARGAR AJUSTE",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjUzOTAsImV4cCI6MTcwMTE4NTM5MCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PXz7-NqLrcN0ZmG5bdgPPN_E9L-qSXRCzsvwwERLkhA",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": [
 								{
 									"key": "ajusteMonto",
-									"value": "2000",
+									"value": "500",
 									"type": "text"
 								},
 								{
 									"key": "motivoAjuste",
-									"value": "Deposito mal realizado.",
+									"value": "Extraccion mal realizado.",
 									"type": "text"
 								},
 								{
 									"key": "nroExtraccion",
 									"value": "3",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "nroDeposito",
-									"value": "8",
-									"type": "text"
+									"value": "6",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -1097,6 +1348,51 @@
 							"path": [
 								"ajuste",
 								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LOGS",
+			"item": [
+				{
+					"name": "LISTAR LOGS ACCIONES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/logs/acciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"logs",
+								"acciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR LOGS TRANSACCIONES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/logs/transacciones",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"logs",
+								"transacciones"
 							]
 						}
 					},

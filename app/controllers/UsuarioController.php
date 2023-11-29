@@ -1,6 +1,7 @@
 <?php
 
     include_once "./models/Usuario.php";
+    include_once "./models/CSV.php";
 
     class UsuarioController extends Usuario{
 
@@ -70,7 +71,7 @@
             return $response
             ->withHeader('Content-Type','application/json');
         }
-
+//********************************************* LOGIN *********************************************
         /**
          * Me permitira loguear un usuario en la aplicacion
          * podra ser Cliente o Administrador.
@@ -98,31 +99,4 @@
             ->withHeader('Content-Type', 'application/json');
         }
         
-        /**
-         * Me permitira obtener todos los logs
-         * de las acciones realizadas.
-         */
-        public static function TraerTodosLogsAcciones($request, $response, $args){
-            $listado = Logger::ObtenerLogsAccesos();
-            
-            $payload = json_encode(array("Logs Acciones" => $listado)); 
-            
-            $response->getBody()->write($payload);
-            return $response
-            ->withHeader('Content-Type','application/json');
-        }
-
-        /**
-         * Me permitira obtener todos los logs
-         * realizados sobre las transacciones.
-         */
-        public static function TraerTodosLogsTransacciones($request, $response, $args){
-            $listado = Logger::ObtenerLogsTransacciones();
-            
-            $payload = json_encode(array("Logs Transacciones" => $listado));  
-            
-            $response->getBody()->write($payload);
-            return $response
-            ->withHeader('Content-Type','application/json');
-        }
     }

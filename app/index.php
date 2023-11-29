@@ -20,6 +20,7 @@ require_once "./middlewares/Logger.php";
 
 require_once './db/accesoDB.php'; 
 
+require_once './controllers/LogController.php';
 require_once './controllers/CuentaController.php';
 require_once './controllers/AjusteController.php';
 require_once './controllers/DepositoController.php';
@@ -109,9 +110,11 @@ $app->group('/login', function (RouteCollectorProxy $group) {
     $group->get('[/]', \Logger::class . '::Desloguear');
 });
 
+//-->Logs
 $app->group('/logs', function (RouteCollectorProxy $group) {
-    $group->get('/acciones', \UsuarioController::class . '::TraerTodosLogsAcciones');
-    $group->get('/transacciones', \UsuarioController::class . '::TraerTodosLogsTransacciones');
+    $group->get('/acciones', \LogController::class . '::TraerTodosLogsAcciones');
+    $group->get('/transacciones', \LogController::class . '::TraerTodosLogsTransacciones');
+    $group->get('/exportarCSV', \LogController::class . '::ExportarLogsAcciones');
 });
 
 $app->get('[/]', function (Request $request, Response $response) {

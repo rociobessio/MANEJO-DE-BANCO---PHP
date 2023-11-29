@@ -8,11 +8,13 @@
          * @return string $path el path del archivo.
          */
         public static function ExportarCSV($path){
-            $listaCuentas = Cuenta::obtenerTodos();
+            // echo  'EN EXPORTAR: ';
+            $lista = Logger::ObtenerLogsAccesos();
+            // var_dump($lista);
             $archivo = fopen($path,"w");
 
-            foreach($listaCuentas as $cuenta){
-                $separar = implode(",", (array)$cuenta);
+            foreach($lista as $item){
+                $separar = implode(",", (array)$item);
                 if($archivo){
                     fwrite($archivo, $separar.",\r\n");
                 }

@@ -22,12 +22,14 @@
                     $cuenta->setSaldo($importeTotal);
                     Cuenta::modificar($cuenta);//-->Modifico la cuenta
         
+                    $nroOperacion = rand(1,999999);
                     //-->Genero el deposito
                     $deposito = new Deposito();
                     $deposito->setMoneda($cuenta->getMoneda());
                     $deposito->setImporte(floatval($parametros['importeDeposito']));
                     $deposito->setNumeroCuenta(intval($parametros['nroCuenta']));
                     $deposito->setTipoCuenta($cuenta->getTipoCuenta());
+                    $deposito->setNroOperacion($nroOperacion);
                     
                     //-->Guardo la imagen del talon
                     if (isset($files['fotoTalonDeposito'])) {
@@ -36,6 +38,10 @@
                     }
                     // var_dump($deposito);
                     Deposito::crear($deposito);
+
+                    //-->Si pude hacer la transaccion, guardo el log.
+                    $data = Logger::ObtenerInfoLog($request);
+                    Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::DEPOSITO);
         
                     $payload = json_encode(array("mensaje" => "Depósito realizado correctamente."));
                 }

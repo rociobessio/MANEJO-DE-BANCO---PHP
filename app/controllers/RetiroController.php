@@ -30,13 +30,19 @@
                         Cuenta::modificar($cuenta);//-->Modifico la cuenta
         
                         //-->Genero el retiro
+                        $nroOperacion = rand(1,999999);
                         $retiro = new Retiro();
+                        $retiro->setNroOperacion($nroOperacion);
                         $retiro->setMoneda($cuenta->getMoneda());
                         $retiro->setImporteRetiro(floatval($parametros['importeRetiro'])); 
                         $retiro->setNumeroCuenta(intval($parametros['nroCuenta']));
                         $retiro->setTipoCuenta($cuenta->getTipoCuenta());
         
                         Retiro::crear($retiro);
+
+                        //-->Si pude hacer la transaccion, guardo el log.
+                        $data = Logger::ObtenerInfoLog($request);
+                        Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::RETIRO);
                         $payload = json_encode(array("mensaje" => "Retiro generado correctamente!"));
                     }
                     else {

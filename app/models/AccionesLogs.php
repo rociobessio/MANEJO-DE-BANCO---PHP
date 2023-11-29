@@ -1,6 +1,9 @@
 <?php
 
-
+    /**
+     * Contendra los estado de 
+     * los logs.
+     */
     class AccionesLogs{
 //********************************************** TRAER TODOS *************************************************************
         const TODOS_Usuarios = "Traer Usuarios";
@@ -45,4 +48,8 @@
         const MOVIMIENTO_DEPOSITOS_POR_MONEDA = "Depositos por moneda";
         const MOVIMIENTO_RETIROS_POR_MONEDA = "Retiros por moneda";
         const MOVIMIENTO_RETIROS_DEPOSITOS_USUARIO = "Retiros y depositos por usuario";
+//********************************************** TRANSACCIONES *************************************************************
+        const DEPOSITO = "DEPOSTIO";
+        const RETIRO = "RETIRO";
+        const AJUSTE = "AJUSTE";
     }

@@ -9,6 +9,7 @@
         public $importeRetiro;
         public $fechaExtraccion;
         public $moneda;
+        public $nroOperacion;
 //********************************************* GETTERS *********************************************
         public function getIdRetiro(){
             return $this->idRetiro;
@@ -27,6 +28,9 @@
         } 
         public function getMoneda(){
             return $this->moneda;
+        }
+        public function getNroOperacion(){
+            return $this->nroOperacion;
         }
 //********************************************* SETTERS *********************************************
         public function setIdRetiro($id){
@@ -59,6 +63,11 @@
                 $this->moneda = $moneda;
             }
         }
+        public function setNroOperacion($nro){
+            if(isset($nro)) {
+                $this->nroOperacion = $nro;
+            }
+        }
 //********************************************* FUNCIONES *********************************************
         /**
          * Me va a permitir guardar una instancia
@@ -67,11 +76,12 @@
         public static function crear($retiro){
             $fechaExtraccion = new DateTime(date("d-m-Y"));//-->Le asigno la fecha de extraccion
             $accesoDB = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $accesoDB->retornarConsulta("INSERT INTO retiros (numeroCuenta,tipoCuenta,importeRetiro,fechaExtraccion,moneda)
-            VALUES (:numeroCuenta,:tipoCuenta,:importeRetiro,:fechaExtraccion,:moneda)");
+            $consulta = $accesoDB->retornarConsulta("INSERT INTO retiros (numeroCuenta,tipoCuenta,importeRetiro,fechaExtraccion,moneda,nroOperacion)
+            VALUES (:numeroCuenta,:tipoCuenta,:importeRetiro,:fechaExtraccion,:moneda,:nroOperacion)");
             $consulta->bindValue(':numeroCuenta',$retiro->getNumeroCuenta(),PDO::PARAM_INT);
             $consulta->bindValue(':tipoCuenta',$retiro->getTipoCuenta(),PDO::PARAM_STR);
             $consulta->bindValue(':moneda',$retiro->getMoneda(),PDO::PARAM_STR);
+            $consulta->bindValue(':nroOperacion',$retiro->getNroOperacion(),PDO::PARAM_INT);
             $consulta->bindValue(':importeRetiro',$retiro->getImporteRetiro(),PDO::PARAM_INT); 
             $consulta->bindValue(':fechaExtraccion',date_format($fechaExtraccion, "Y-m-d"),PDO::PARAM_STR);
             $consulta->execute();
@@ -93,7 +103,7 @@
         public static function obtenerUno($idRetiro){
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $objAccesoDB->retornarConsulta("SELECT idRetiro,numeroCuenta,tipoCuenta,importeRetiro,
-            fechaExtraccion,moneda FROM retiros WHERE idRetiro = :idRetiro");
+            fechaExtraccion,moneda,nroOperacion FROM retiros WHERE idRetiro = :idRetiro");
             $consulta->bindValue(':idRetiro', $idRetiro, PDO::PARAM_INT);
             $consulta->execute();
 

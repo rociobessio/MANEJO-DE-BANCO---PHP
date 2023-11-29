@@ -36,9 +36,32 @@
         }
 
         /**
+         * Se deberá generar un log de transacciones en el que se registrarán los datos de
+         * fecha y hora, usuario y número de operación, luego de que la operación sea
+         * registrada.
+         * 
+         * @param int $idUsuario asumo que idUsuario es el usuario a cargo de realizar
+         * la transaccion y no el propietario de la cuenta.
+         * @param int $nroOperacion el nro de operacion del deposito/retiro generado.
+         */
+        public static function CargarLogTransaccion($idUsuario,$nroOperacion,$sobre){
+            $objAccesoDatos = AccesoDatos::obtenerObjetoAcceso();
+            $consulta = $objAccesoDatos->retornarConsulta("INSERT INTO logstransacciones (idUsuario,nroOperacion,fechaTransaccion,sobre) VALUES
+            (:idUsuario,:nroOperacion,:fechaTransaccion,:sobre)");
+            $consulta->bindValue(":idUsuario", $idUsuario, PDO::PARAM_INT);
+            $consulta->bindValue(":nroOperacion", $nroOperacion, PDO::PARAM_INT);
+            $consulta->bindValue(":sobre", $sobre, PDO::PARAM_STR);
+            $fechaTransaccion = new DateTime();
+            $consulta->bindValue(":fechaTransaccion", $fechaTransaccion->format('Y-m-d H:i:s'));
+            $consulta->execute();
+        }
+
+        /**
          * Para desloguear al usuario.
          */
         public static function Desloguear($request,$response){
+            //-->Se limpia la cookie
+            $response = $response->withHeader('Set-Cookie', 'token=; Max-Age=0; HttpOnly; Secure');
             $response->getBody()->write("Usuario deslogueado!");
             return $response->withHeader('Content-Type', 'application/json');
         }

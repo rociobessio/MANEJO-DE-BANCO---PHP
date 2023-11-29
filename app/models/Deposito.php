@@ -10,6 +10,7 @@
         public $importe;
         public $fechaDeposito;
         public $moneda;
+        public $nroOperacion;
 //********************************************* GETTERS *********************************************
         public function getIdDeposito(){
             return $this->idDeposito;
@@ -28,6 +29,9 @@
         }
         public function getMoneda(){
             return $this->moneda;
+        }
+        public function getNroOperacion(){
+            return $this->nroOperacion;
         }
 //********************************************* SETTERS *********************************************
         public function setIdDeposito($id){
@@ -60,6 +64,11 @@
                 $this->moneda = $moneda;
             }
         }
+        public function setNroOperacion($nroOperacion){
+            if(isset($nroOperacion)) {
+                $this->nroOperacion = $nroOperacion;
+            }
+        }
 //********************************************* FUNCIONES *********************************************
         
         /**
@@ -72,12 +81,13 @@
         public static function crear($deposito){
             $fechaDeposito = new DateTime(date("d-m-Y"));//-->Le asigno la fecha de deposito
             $accesoDB = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $accesoDB->retornarConsulta("INSERT INTO depositos (numeroCuenta,tipoCuenta,importe,fechaDeposito,moneda)
-            VALUES (:numeroCuenta,:tipoCuenta,:importe,:fechaDeposito,:moneda)");
+            $consulta = $accesoDB->retornarConsulta("INSERT INTO depositos (numeroCuenta,tipoCuenta,importe,fechaDeposito,moneda,nroOperacion)
+            VALUES (:numeroCuenta,:tipoCuenta,:importe,:fechaDeposito,:moneda,:nroOperacion)");
             $consulta->bindValue(':numeroCuenta',$deposito->getNumeroCuenta(),PDO::PARAM_INT);
             $consulta->bindValue(':tipoCuenta',$deposito->getTipoCuenta(),PDO::PARAM_STR);
             $consulta->bindValue(':moneda',$deposito->getMoneda(),PDO::PARAM_STR);
             $consulta->bindValue(':importe',$deposito->getImporte(),PDO::PARAM_INT);
+            $consulta->bindValue(':nroOperacion',$deposito->getNroOperacion(),PDO::PARAM_INT);
             $consulta->bindValue(':fechaDeposito',date_format($fechaDeposito, "Y-m-d"),PDO::PARAM_STR);
             $consulta->execute();
             return $accesoDB->retornarUltimoInsertado();
@@ -96,7 +106,7 @@
          */
         public static function obtenerUno($idDeposito){
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $objAccesoDB->retornarConsulta("SELECT idDeposito,numeroCuenta,tipoCuenta,importe,fechaDeposito,moneda
+            $consulta = $objAccesoDB->retornarConsulta("SELECT idDeposito,numeroCuenta,tipoCuenta,importe,fechaDeposito,moneda,nroOperacion
             FROM depositos WHERE idDeposito = :idDeposito");
             $consulta->bindValue(':idDeposito', $idDeposito, PDO::PARAM_INT);
             $consulta->execute();

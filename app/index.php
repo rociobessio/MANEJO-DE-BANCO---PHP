@@ -80,6 +80,7 @@ $app->group('/ajuste',function (RouteCollectorProxy $group){
 
 // -->Depositos
 $app->group('/deposito',function (RouteCollectorProxy $group){
+    $group->post('/descargarPDF',\DepositoController::class . '::DescargarPDFDepositos');
     $group->get('[/]',\DepositoController::class . '::TraerTodos');
     $group->get('/{id}',\DepositoController::class . '::TraerUno');
     $group->post('[/]', \DepositoController::class . '::CargarUno')->add(new MWCajero());
@@ -104,7 +105,7 @@ $app->group('/usuario',function (RouteCollectorProxy $group){
 })->add(new MWToken())->add(new MWSupervisor());
 
 $app->group('/login', function (RouteCollectorProxy $group) {
-    // //-->Login para conseguir token de ingreso
+    //-->Login para conseguir token de ingreso
     $group->post('[/]', \UsuarioController::class . '::LoguearCuenta')->add(\Logger::class . '::ValidarUsuario');
     // Para desloguearse
     $group->get('[/]', \Logger::class . '::Desloguear');

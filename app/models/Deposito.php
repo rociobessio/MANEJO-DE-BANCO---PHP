@@ -1,5 +1,5 @@
 <?php
-
+use Fpdf\Fpdf;
     require_once "./interfaces/ICrud.php";
 
     class Deposito implements ICrud{
@@ -260,5 +260,64 @@
             return $consulta->fetchAll(PDO::FETCH_ASSOC);
         }
         
+
+        public static function DescargarPDF($directorio, $cantDepositos)
+        {
+            $depositos = self::obtenerTodos();
+
+            if ($depositos) {
+                if (!file_exists($directorio)) {
+                    mkdir($directorio, 0777, true);
+                }
+
+                $pdf = new FPDF();
+                $pdf->AddPage();
+
+                $pdf->SetFont('Arial', 'B', 16);
+                $pdf->Cell(0, 10, 'Segundo Parcial', 0, 1, 'L');
+                $pdf->Cell(60, 0, '', 'T');
+                $pdf->Ln(5);
+
+                $pdf->SetFont('Arial', 'B', 12);
+                $pdf->Cell(0, 10, 'Depositos', 0, 1, 'L');
+                $pdf->Ln(5);
+
+                $header = array('ID', 'Nro. Operacion', 'Tipo Cuenta', 'Importe', 'Fecha Deposito', 'Moneda', 'Nro. Operacion');
+                $w = array(10, 30, 30, 25, 40, 20, 35);
+                
+                //-->Estilo del header
+                $pdf->SetFont('Arial', 'B', 10);
+                $pdf->SetFillColor(210, 200, 225);//-->CoOlor del header
+                for ($i = 0; $i < count($header); $i++) {
+                    $pdf->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
+                }
+                $pdf->Ln();
+                
+                //Estilo de la row
+                $pdf->SetFont('Arial', '', 10);
+                $fill = false;
+                foreach ($depositos as $deposito) {//-->Relleno
+                    for ($i = 0; $i < count($header); $i++) {
+                        $pdf->Cell($w[0], 6, $deposito->getIdDeposito(), 'LR', 0, 'C', $fill);
+                        $pdf->Cell($w[1], 6, $deposito->getNumeroCuenta(), 'LR', 0, 'C', $fill);
+                        $pdf->Cell($w[2], 6, $deposito->getTipoCuenta(), 'LR', 0, 'C', $fill);
+                        $pdf->Cell($w[3], 6, $deposito->getImporte(), 'LR', 0, 'C', $fill);
+                        $pdf->Cell($w[4], 6, $deposito->getFechaDeposito(), 'LR', 0, 'C', $fill);
+                        $pdf->Cell($w[5], 6, $deposito->getMoneda(), 'LR', 0, 'C', $fill);
+                        $pdf->Cell($w[6], 6, $deposito->getNroOperacion(), 'LR', 0, 'C', $fill);
+                    }
+                    $pdf->Ln();
+                    $fill = !$fill;
+                }
+                $newFilename = $directorio . 'Depositos_' . date('Y_m_d') . '.pdf';
+                $pdf->Output('F', $newFilename, 'I');
+
+                $payload = json_encode(array("message" => 'PDF creado: ' . $newFilename));
+            } else {
+                $payload = json_encode(array("error" => 'No se pudo realizar el PDF'));
+            }
+
+            return $payload;
+        }
     }
 

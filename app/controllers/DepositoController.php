@@ -129,6 +129,22 @@
             return $response->withHeader('Content-Type', 'application/json');
         }
 
+        public static function DescargarPDFDepositos($request, $response, $args){
+            $params = $request->getParsedBody();
+            $directory = './Archives/';
+            $payload = json_encode(array("Error" => 'No se pudo guardar el PDF',"Depositos" => 'Ocurrio un error al querer generar el PDF'));
+            
+            if($params['cantDepositos']){
+                $amountPolls = intval($params['cantDepositos']);
+                $payload = Deposito::DescargarPDF($directory, $amountPolls);
+                echo 'File Saved in '.$directory;
+            }
+            
+            $response->getBody()->write($payload);
+            return $response
+              ->withHeader('Content-Type', 'application/json');
+        }
+
 //********************************************* MOVIMIENTOS *********************************************
         /**
          * a- El total depositado (monto) por tipo de cuenta y moneda en un día en

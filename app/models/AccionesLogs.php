@@ -49,7 +49,7 @@
         const MOVIMIENTO_RETIROS_POR_MONEDA = "Retiros por moneda";
         const MOVIMIENTO_RETIROS_DEPOSITOS_USUARIO = "Retiros y depositos por usuario";
 //********************************************** TRANSACCIONES *************************************************************
-        const DEPOSITO = "DEPOSTIO";
+        const DEPOSITO = "DEPOSITO";
         const RETIRO = "RETIRO";
         const AJUSTE = "AJUSTE";
     }

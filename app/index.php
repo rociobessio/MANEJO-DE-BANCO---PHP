@@ -15,6 +15,7 @@ require __DIR__ . '/../vendor/autoload.php';
 require_once "./middlewares/MWSupervisor.php";
 require_once "./middlewares/MWCajero.php";
 require_once "./middlewares/MWOperador.php";
+require_once "./middlewares/MWAdministrador.php";
 require_once "./middlewares/MWToken.php";  
 require_once "./middlewares/Logger.php";
 
@@ -40,15 +41,15 @@ $app->addBodyParsingMiddleware();
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
-// -->Cuentas
+// -->Cuentas, no especificado -> Lo maneja el administrador
 $app->group('/cuenta',function (RouteCollectorProxy $group){
-    $group->get('[/]',\CuentaController::class . '::TraerTodos')->add(new MWOperador());
-    $group->get('/{id}',\CuentaController::class . '::TraerUno')->add(new MWOperador());
-    $group->post('[/]', \CuentaController::class . '::CargarUno')->add(new MWSupervisor());
+    $group->get('[/]',\CuentaController::class . '::TraerTodos');    
+    $group->get('/{id}',\CuentaController::class . '::TraerUno');
+    $group->post('[/]', \CuentaController::class . '::CargarUno');
     $group->put('/{id}', \CuentaController::class . '::ModificarUno');
-    $group->delete('/{id}/{tipoCuenta}/{moneda}', \CuentaController::class . '::BorrarUno')->add(new MWSupervisor());
+    $group->delete('/{id}/{tipoCuenta}/{moneda}', \CuentaController::class . '::BorrarUno');
     $group->post('/consultarCuenta/{numeroCuenta}/{tipoCuenta}', \CuentaController::class . '::ConsultarCuenta');
-})->add(new MWToken());
+})->add(new MWToken())->add(new MWAdmin());
 
 //-->Movimientos,Consultas (de todo tipo) -> rol operador
 $app->group('/movimientos', function (RouteCollectorProxy $group) {
@@ -78,17 +79,17 @@ $app->group('/ajuste',function (RouteCollectorProxy $group){
     $group->delete('/{id}', \AjusteController::class . '::BorrarUno');
 })->add(new MWToken())->add(new MWSupervisor());
 
-// -->Depositos
+// -->Depositos,Depósitos y Retiros -> rol cajero
 $app->group('/deposito',function (RouteCollectorProxy $group){
     $group->post('/descargarPDF',\DepositoController::class . '::DescargarPDFDepositos');
     $group->get('[/]',\DepositoController::class . '::TraerTodos');
     $group->get('/{id}',\DepositoController::class . '::TraerUno');
-    $group->post('[/]', \DepositoController::class . '::CargarUno')->add(new MWCajero());
-    $group->put('/{id}', \DepositoController::class . '::ModificarUno')->add(new MWCajero());
-    $group->delete('/{id}', \DepositoController::class . '::BorrarUno')->add(new MWCajero());
-})->add(new MWToken());
+    $group->post('[/]', \DepositoController::class . '::CargarUno');
+    $group->put('/{id}', \DepositoController::class . '::ModificarUno');
+    $group->delete('/{id}', \DepositoController::class . '::BorrarUno');
+})->add(new MWToken())->add(new MWCajero());
 
-// -->Retiros,
+// -->Retiros,Depósitos y Retiros -> rol cajero
 $app->group('/retiro',function (RouteCollectorProxy $group){
     $group->get('[/]',\RetiroController::class . '::TraerTodos');
     $group->get('/{id}',\RetiroController::class . '::TraerUno');
@@ -102,12 +103,12 @@ $app->group('/usuario',function (RouteCollectorProxy $group){
     $group->get('[/]',\UsuarioController::class . '::TraerTodos');
     $group->get('/{id}',\UsuarioController::class . '::TraerUno');
     $group->post('[/]', \UsuarioController::class . '::CargarUno'); 
-})->add(new MWToken())->add(new MWSupervisor());
+})->add(new MWToken())->add(new MWAdmin());
 
 $app->group('/login', function (RouteCollectorProxy $group) {
     //-->Login para conseguir token de ingreso
     $group->post('[/]', \UsuarioController::class . '::LoguearCuenta')->add(\Logger::class . '::ValidarUsuario');
-    // Para desloguearse
+    //-->Para desloguearse
     $group->get('[/]', \Logger::class . '::Desloguear');
 });
 

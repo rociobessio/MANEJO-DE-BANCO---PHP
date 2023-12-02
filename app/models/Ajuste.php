@@ -205,6 +205,7 @@
                 if($cuenta && $cuenta->getEstado()){
 
                     $cuenta->setSaldo($cuenta->getSaldo() - $montoAjuste);
+                    // var_dump($cuenta->getSaldo());
                     Cuenta::modificar($cuenta); 
 
                     //-->Genero el ajuste:

@@ -1,8 +1,3 @@
-Ya estan hechos los controllers y models.
-
-->Quizas en Cuenta si va nombre,apellido,tipodoc,numerodoc y solo
-en Usuario, mail, clave y rol. 
-
 ==========================================================================>
 El punto 1B - Cuenta Alta:
 ->[YA ESTA]
@@ -51,8 +46,6 @@ Luego tirar en la raiz del proyecto composer update
 
 ==========================================================================>
 Del segundo parcial queda hacer los ultimos dos puntos.
-
-->Ver logs.
 
 ->Ver deslogueo.
 

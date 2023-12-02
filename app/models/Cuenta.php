@@ -13,7 +13,6 @@
         public $nombre;
         public $apellido;
         public $tipoDocumento;
-        public $numeroDocumento;
         public $email;
 //********************************************* GETTERS *********************************************
         public function getIdCuenta(){
@@ -45,9 +44,6 @@
         }
         public function getTipoDocumento(){
             return $this->tipoDocumento;
-        }
-        public function getNumeroDocumento(){
-            return $this->numeroDocumento;
         }
         public function getEmail(){
             return $this->email;
@@ -105,11 +101,6 @@
             else{
                 echo 'tipo documento no valido se aceptan [DNI,LE,LC,CI], reingrese!<br>';
                 exit;
-            }
-        } 
-        public function setNumeroDocumento($numeroDocumento){
-            if(isset($numeroDocumento) && !empty($numeroDocumento)) {
-                $this->numeroDocumento = $numeroDocumento;
             }
         }
         public function setEmail($email){

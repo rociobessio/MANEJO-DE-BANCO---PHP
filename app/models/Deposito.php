@@ -282,7 +282,7 @@ use Fpdf\Fpdf;
                 $pdf->Cell(0, 10, 'Depositos', 0, 1, 'L');
                 $pdf->Ln(5);
 
-                $header = array('ID', 'Nro. Operacion', 'Tipo Cuenta', 'Importe', 'Fecha Deposito', 'Moneda', 'Nro. Operacion');
+                $header = array('ID', 'Nro. Cuenta', 'Tipo Cuenta', 'Importe', 'Fecha Deposito', 'Moneda', 'Nro. Operacion');
                 $w = array(10, 30, 30, 25, 40, 20, 35);
                 
                 //-->Estilo del header

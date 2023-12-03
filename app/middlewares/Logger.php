@@ -44,12 +44,13 @@
          * la transaccion y no el propietario de la cuenta.
          * @param int $nroOperacion el nro de operacion del deposito/retiro generado.
          */
-        public static function CargarLogTransaccion($idUsuario,$nroOperacion,$sobre){
+        public static function CargarLogTransaccion($idUsuario,$nroOperacion,$sobre,$idCuenta){
             $objAccesoDatos = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $objAccesoDatos->retornarConsulta("INSERT INTO logstransacciones (idUsuario,nroOperacion,fechaTransaccion,sobre) VALUES
-            (:idUsuario,:nroOperacion,:fechaTransaccion,:sobre)");
+            $consulta = $objAccesoDatos->retornarConsulta("INSERT INTO logstransacciones (idUsuario,nroOperacion,idCuenta,fechaTransaccion,sobre) VALUES
+            (:idUsuario,:nroOperacion,:idCuenta,:fechaTransaccion,:sobre)");
             $consulta->bindValue(":idUsuario", $idUsuario, PDO::PARAM_INT);
             $consulta->bindValue(":nroOperacion", $nroOperacion, PDO::PARAM_INT);
+            $consulta->bindValue(":idCuenta", $idCuenta, PDO::PARAM_INT);
             $consulta->bindValue(":sobre", $sobre, PDO::PARAM_STR);
             $fechaTransaccion = new DateTime();
             $consulta->bindValue(":fechaTransaccion", $fechaTransaccion->format('Y-m-d H:i:s'));

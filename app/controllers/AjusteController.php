@@ -9,7 +9,7 @@
         /**
          * Se ingresa el número de extracción o depósito afectado al ajuste y el motivo del
          * mismo. El número de extracción o depósito debe existir.
-         * 
+         *
          * Actualiza en el saldo en el archivo banco.json
          */
         public static function CargarUno($request, $response, $args){
@@ -21,11 +21,7 @@
                 //-->Me fijo que parametro esta setteado
                 if(isset($parametros['nroExtraccion'])){
                     if(Ajuste::generarAjuste($parametros['motivoAjuste'],floatval($parametros['ajusteMonto']),
-                    "extracciones",intval($parametros['nroExtraccion']),$nroOperacion)){
-
-                        //-->Si pude hacer la transaccion, guardo el log.
-                        $data = Logger::ObtenerInfoLog($request);
-                        Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::AJUSTE);
+                    "extracciones",intval($parametros['nroExtraccion']),$nroOperacion,$request)){
 
                         $payload = json_encode(array("mensaje" => "Ajuste generado correctamente sobre la extraccion!"));
                     }
@@ -35,10 +31,8 @@
                 }
                 elseif(isset($parametros['nroDeposito'])){
                     if(Ajuste::generarAjuste($parametros['motivoAjuste'],floatval($parametros['ajusteMonto']),
-                    "depositos",intval($parametros['nroDeposito']),$nroOperacion)){
-                        //-->Si pude hacer la transaccion, guardo el log.
-                        $data = Logger::ObtenerInfoLog($request);
-                        Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::AJUSTE);
+                    "depositos",intval($parametros['nroDeposito']),$nroOperacion,$request)){
+
                         $payload = json_encode(array("mensaje" => "Ajuste generado correctamente sobre el deposito!"));
                     }
                     else{$payload = json_encode(array("mensaje" => "Ocurrio un error al querer realizar el ajuste sobre el deposito!"));}
@@ -47,21 +41,21 @@
             }
             else{$payload = json_encode(array("mensaje" => "Se debe de ingresar el monto del ajuste y motivo!"));}
 
-            //-->Si pude hacer la transaccion, guardo el log.
+            //-->Sin importar el resultado, guardo el log.
             $data = Logger::ObtenerInfoLog($request);
-            Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::CARGAR_Ajuste);
+            Logger::CargarLog($data->id,$nroOperacion,AccionesLogs::CARGAR_Ajuste);
 
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
-        
+
         public static function TraerUno($request, $response, $args){
             $val = $args['id'];
             $ajuste = Ajuste::obtenerUno(intval($val));//-->Me traigo uno.
 
             if($ajuste !== false){$payload = json_encode($ajuste);}
             else{ $payload = json_encode(array("mensaje" => "No hay coincidencia de ajuste con ID:" . $val ." !"));}
-            
+
             //-->Guardo el log
             $data = Logger::ObtenerInfoLog($request);
             Logger::CargarLog($data->id, AccionesLogs::TRAER_Ajuste);
@@ -69,7 +63,7 @@
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
-	    
+
         public static function TraerTodos($request, $response, $args){
             $listado = Ajuste::obtenerTodos();
             $payload = json_encode(array("Ajustes" => $listado));
@@ -82,7 +76,7 @@
             return $response
             ->withHeader('Content-Type','application/json');
         }
-	    	    
+
         public static function BorrarUno($request, $response, $args){
             $id = $args['id'];
 
@@ -99,7 +93,7 @@
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }
-	    
+
         public static function ModificarUno($request, $response, $args){
             $id = $args['id'];
 

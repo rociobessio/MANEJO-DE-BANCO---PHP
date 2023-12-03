@@ -139,11 +139,11 @@
          * Me permitira discriminar sobre donde se realiza el ajuste, sobre
          * extracciones o depositos.
          */
-        public static function generarAjuste($motivo,$montoAjuste,$sobre,$nroBuscado,$nroOperacion){ 
+        public static function generarAjuste($motivo,$montoAjuste,$sobre,$nroBuscado,$nroOperacion,$request){ 
             if($sobre === "extracciones"){
                 $retiro = Retiro::obtenerUno(intval($nroBuscado));
                 if($retiro){
-                    if(Ajuste::aplicarAjusteSobreExtraccion($motivo,$montoAjuste,$retiro,$nroOperacion)){
+                    if(Ajuste::aplicarAjusteSobreExtraccion($motivo,$montoAjuste,$retiro,$nroOperacion,$request)){
                         return true;
                     }
                 }
@@ -154,7 +154,7 @@
             elseif($sobre === "depositos"){
                 $deposito = Deposito::obtenerUno(intval($nroBuscado));
                 if($deposito){
-                    if(Ajuste::aplicarAjusteSobreDeposito($motivo,$montoAjuste,$deposito,$nroOperacion)){
+                    if(Ajuste::aplicarAjusteSobreDeposito($motivo,$montoAjuste,$deposito,$nroOperacion,$request)){
                         return true;
                     }
                 }
@@ -178,7 +178,7 @@
          * @return bool true si pudo aplicar el ajuste
          * correctamente, false sino.
          */
-        private static function aplicarAjusteSobreExtraccion($motivo,$montoAjuste,$retiro,$nroOperacion){
+        private static function aplicarAjusteSobreExtraccion($motivo,$montoAjuste,$retiro,$nroOperacion,$request){
 
             if($retiro->verificarImporte(floatval($montoAjuste))){
                 $cuenta = Cuenta::ObtenerCuentaPorNroYTipo($retiro->getNumeroCuenta(),$retiro->getTipoCuenta(),$retiro->getMoneda());
@@ -190,6 +190,10 @@
                     //-->Genero el ajuste:
                     $ajuste = Ajuste::constructor($montoAjuste,"Retiro",$motivo,$retiro->getIdRetiro(),$cuenta->getIdCuenta(),$nroOperacion);
                     Ajuste::crear($ajuste);
+                    
+                    //-->Si pude hacer la transaccion, guardo el log.
+                    $data = Logger::ObtenerInfoLog($request);
+                    Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::AJUSTE,$cuenta->getIdCuenta());
 
                     return true;
                 }
@@ -210,7 +214,7 @@
          * @return bool true si pudo aplicar el ajuste
          * correctamente, false sino.
          */
-        private static function aplicarAjusteSobreDeposito($motivo,$montoAjuste,$deposito,$nroOperacion){
+        private static function aplicarAjusteSobreDeposito($motivo,$montoAjuste,$deposito,$nroOperacion,$request){
             if($deposito->verificarImporte($montoAjuste)){
                 $cuenta = Cuenta::ObtenerCuentaPorNroYTipo($deposito->getNumeroCuenta(),$deposito->getTipoCuenta(),$deposito->getMoneda());
                 if($cuenta && $cuenta->getEstado()){
@@ -222,6 +226,11 @@
                     //-->Genero el ajuste:
                     $ajuste = Ajuste::constructor($montoAjuste,"Deposito",$motivo,$deposito->getIdDeposito(),$cuenta->getIdCuenta(),$nroOperacion);
                     Ajuste::crear($ajuste);
+
+                    //-->Si pude hacer la transaccion, guardo el log.
+                    $data = Logger::ObtenerInfoLog($request);
+                    Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::AJUSTE,$cuenta->getIdCuenta());
+
                     return true;
                 }
             }

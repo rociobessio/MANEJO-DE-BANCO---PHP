@@ -60,7 +60,7 @@
 
             //-->Sin importar el resultado, guardo el log.
             $data = Logger::ObtenerInfoLog($request);
-            Logger::CargarLog($data->id,$nroOperacion,AccionesLogs::CARGAR_Retiro);
+            Logger::CargarLog($data->id,AccionesLogs::CARGAR_Retiro);
         
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');

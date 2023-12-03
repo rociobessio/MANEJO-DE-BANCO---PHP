@@ -57,6 +57,10 @@
             else {
                 $payload = json_encode(array("mensaje" => "Se necesitan todos los datos para generar el retiro!"));
             }
+
+            //-->Si pude hacer la transaccion, guardo el log.
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::CARGAR_Retiro);
         
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');

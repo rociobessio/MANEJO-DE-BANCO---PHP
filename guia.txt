@@ -57,3 +57,8 @@ se intente consumir un recurso, independientemente de su resultado)
 ->Se refiere a TODOS los endpoints?
 
 ->Los listar de depositos y retiros son sobre el supervisor o el cajero?
+
+->QUEDA VER SI AL GENERAR LAS TRANSACCIONES TAMBIEN SE DEBEN DE REALIZAR LOS 
+LOGS DE ACCESOS
+
+->PODRIA TENER TAMBIEN UN LEER CSV QUE IMPRIMA EL CONTENIDO.

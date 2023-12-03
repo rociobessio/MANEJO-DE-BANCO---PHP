@@ -59,6 +59,20 @@
         }
 
         /**
+         * Me permtira leer un CSV.
+         */
+        public static function LeerCSV($path){
+            $file = fopen($path, 'r');
+            $data = array();
+            while (($line = fgetcsv($file)) !== FALSE) {
+                $data[] = $line;
+            }
+            fclose($file);
+            return $data;
+        }
+        
+
+        /**
          * Me va a permitir validar la extension del 
          * archivo.
          */

@@ -54,6 +54,10 @@
                 $payload = json_encode(array("mensaje" => "Faltan parámetros en la solicitud."));
             }
         
+            //-->Si pude hacer la transaccion, guardo el log.
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::CARGAR_Deposito);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }

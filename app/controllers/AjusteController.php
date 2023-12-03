@@ -46,7 +46,11 @@
                 else{$payload = json_encode(array("mensaje" => "Para completar la accion se debe de ingresar el nro de deposito o de extraccion!"));}
             }
             else{$payload = json_encode(array("mensaje" => "Se debe de ingresar el monto del ajuste y motivo!"));}
-        
+
+            //-->Si pude hacer la transaccion, guardo el log.
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::CARGAR_Ajuste);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }

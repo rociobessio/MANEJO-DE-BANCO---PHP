@@ -20,9 +20,9 @@
 //********************************************** CARGAR UNO *************************************************************
         const CARGAR_Usuario = "Cargar Usuario";
         const CARGAR_Cuenta = "Cargar Cuenta";
-        const CARGAR_Deposito = "Cargar Deposito";
-        const CARGAR_Retiro = "Cargar Retiro"; 
-        const CARGAR_Ajuste = "Cargar Ajuste";
+        const CARGAR_Deposito = "Generar Deposito";
+        const CARGAR_Retiro = "Generar Retiro"; 
+        const CARGAR_Ajuste = "Generar Ajuste";
 //********************************************** MODIFICAR UNO *************************************************************
         const MODIFICAR_Usuario = "Modificar Usuario";
         const MODIFICAR_Cuenta = "Modificar Cuenta";

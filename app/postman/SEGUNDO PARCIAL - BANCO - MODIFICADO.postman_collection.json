@@ -115,6 +115,41 @@
 					"response": []
 				},
 				{
+					"name": "ADMINISTRADOR",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "emailUsuario",
+									"value": "administrador@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "clave",
+									"value": "123admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "LOGOUT",
 					"request": {
 						"method": "GET",
@@ -152,7 +187,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODI3MzUsImV4cCI6MTcwMTI0MjczNSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PllOXh6-hYfsS57gIYGiON3splbYhj6gNAx7MTaoJAU",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzcyMjgsImV4cCI6MTcwMTU5NzIyOCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.8yE1ts8dNHFoJvE22dLmsuTf3S8IZi3bvpKCVO4qwCI",
 								"type": "text"
 							}
 						],
@@ -178,7 +213,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODI3MzUsImV4cCI6MTcwMTI0MjczNSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PllOXh6-hYfsS57gIYGiON3splbYhj6gNAx7MTaoJAU",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzcyMjgsImV4cCI6MTcwMTU5NzIyOCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.8yE1ts8dNHFoJvE22dLmsuTf3S8IZi3bvpKCVO4qwCI",
 								"type": "text"
 							}
 						],
@@ -188,36 +223,40 @@
 								{
 									"key": "nombre",
 									"value": "Valentina",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "apellido",
 									"value": "Rodriguez",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "tipoDocumento",
 									"value": "DNI",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "numeroDocumento",
 									"value": "27891293",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "rol",
-									"value": "Cliente",
+									"value": "Admin",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "val@gmail.com",
+									"value": "administrador@admin.com",
 									"type": "text"
 								},
 								{
 									"key": "clave",
-									"value": "123valentina",
+									"value": "123admin",
 									"type": "text"
 								}
 							]
@@ -244,7 +283,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODI3MzUsImV4cCI6MTcwMTI0MjczNSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PllOXh6-hYfsS57gIYGiON3splbYhj6gNAx7MTaoJAU",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzcyMjgsImV4cCI6MTcwMTU5NzIyOCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.8yE1ts8dNHFoJvE22dLmsuTf3S8IZi3bvpKCVO4qwCI",
 								"type": "text"
 							}
 						],
@@ -275,7 +314,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzAxNTUsImV4cCI6MTcwMTU5MDE1NSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.nS8NvcP8RQeswbLU_p1cco5SYVD7zTHVAKgTpgpSijQ",
 								"type": "text"
 							}
 						],
@@ -301,12 +340,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzMwNzAsImV4cCI6MTcwMTU5MzA3MCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.NmBCRvzWmVAy67IT3_-_zqBnc5GKwtH9gtGT4Dvfw3s",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:666/cuenta/100008",
+							"raw": "http://localhost:666/cuenta/100009",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -314,7 +353,7 @@
 							"port": "666",
 							"path": [
 								"cuenta",
-								"100008"
+								"100009"
 							]
 						}
 					},
@@ -327,7 +366,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjYyNDksImV4cCI6MTcwMTE4NjI0OSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.ujxg44xyO6wuqcXZQDC80THSUFx7Gzr3uv-SfJRSqlg",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzAxNTUsImV4cCI6MTcwMTU5MDE1NSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.nS8NvcP8RQeswbLU_p1cco5SYVD7zTHVAKgTpgpSijQ",
 								"type": "text"
 							}
 						],
@@ -336,12 +375,12 @@
 							"formdata": [
 								{
 									"key": "nroDocumento",
-									"value": "37182031",
+									"value": "3489210",
 									"type": "text"
 								},
 								{
 									"key": "tipoCuenta",
-									"value": "CCU$S",
+									"value": "CAU$S",
 									"type": "text"
 								},
 								{
@@ -351,13 +390,13 @@
 								},
 								{
 									"key": "saldo",
-									"value": "100000",
+									"value": "23000",
 									"type": "text"
 								},
 								{
 									"key": "fotoCuenta",
 									"type": "file",
-									"src": "/C:/Users/Rocio/Downloads/74268502-anciana-mirando-a-cámara.jpg"
+									"src": "/C:/Users/Rocio/Downloads/pnghut_dog-breed-dachshund-bernese-mountain-running-with-your-puppy-training.png"
 								},
 								{
 									"key": "nroCuenta",
@@ -372,17 +411,17 @@
 								},
 								{
 									"key": "email",
-									"value": "rociobessio@gmail.com",
+									"value": "miranda@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "nombre",
-									"value": "rocio",
+									"value": "miranda",
 									"type": "text"
 								},
 								{
 									"key": "apellido",
-									"value": "bessio",
+									"value": "sergi",
 									"type": "text"
 								}
 							]
@@ -409,7 +448,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjYyNDksImV4cCI6MTcwMTE4NjI0OSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.ujxg44xyO6wuqcXZQDC80THSUFx7Gzr3uv-SfJRSqlg",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzY5NzYsImV4cCI6MTcwMTU5Njk3NiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.sRzjIhYSDkAKaQDdtYqeomSia5Jf0tBs0v_x8LsJ4VY",
 								"type": "text"
 							}
 						],
@@ -455,7 +494,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODUwNDMsImV4cCI6MTcwMTI0NTA0MywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.1kur1C93GgIb8DiVEVz7zdM2lxdAwS8XFlRSRaw0q_M",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzY5NzYsImV4cCI6MTcwMTU5Njk3NiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.sRzjIhYSDkAKaQDdtYqeomSia5Jf0tBs0v_x8LsJ4VY",
 								"type": "text"
 							}
 						],
@@ -483,12 +522,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzY5NzYsImV4cCI6MTcwMTU5Njk3NiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjExLCJyb2wiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5pc3RyYWRvckBhZG1pbi5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.sRzjIhYSDkAKaQDdtYqeomSia5Jf0tBs0v_x8LsJ4VY",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:666/cuenta/consultarCuenta/100007/CCU$S",
+							"raw": "http://localhost:666/cuenta/consultarCuenta/100009/CAU$S",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -497,8 +536,8 @@
 							"path": [
 								"cuenta",
 								"consultarCuenta",
-								"100007",
-								"CCU$S"
+								"100009",
+								"CAU$S"
 							]
 						}
 					},
@@ -516,7 +555,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTk3NzgsImV4cCI6MTcwMTI3OTc3OCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.OC2di81zAN4eoEm-lkcwTkLWvxTF2MZRdl8_6pPDXmY",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzczMjcsImV4cCI6MTcwMTU5NzMyNywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.bEDdjIG4z5EVMvmaodBzOP-HD00I6EpuHiW1HSKdX2Y",
 								"type": "text"
 							}
 						],
@@ -542,12 +581,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjQyMDksImV4cCI6MTcwMTE4NDIwOSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.LcxNmj-fwiXLbK0SIEwsWP9MxTGDWusF4Vz25avU5QI",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzczMjcsImV4cCI6MTcwMTU5NzMyNywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.bEDdjIG4z5EVMvmaodBzOP-HD00I6EpuHiW1HSKdX2Y",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:666/deposito/6",
+							"raw": "http://localhost:666/deposito/15",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -555,7 +594,7 @@
 							"port": "666",
 							"path": [
 								"deposito",
-								"6"
+								"15"
 							]
 						}
 					},
@@ -568,7 +607,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTk4MDQsImV4cCI6MTcwMTI3OTgwNCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.HsnVHslEkTJKENBoHRmxWKFJtPYAq1yBKXCc1yzURbA",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzczMjcsImV4cCI6MTcwMTU5NzMyNywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.bEDdjIG4z5EVMvmaodBzOP-HD00I6EpuHiW1HSKdX2Y",
 								"type": "text"
 							}
 						],
@@ -577,27 +616,27 @@
 							"formdata": [
 								{
 									"key": "nroCuenta",
-									"value": "100005",
+									"value": "100009",
 									"type": "text"
 								},
 								{
 									"key": "tipoCuenta",
-									"value": "CA$",
+									"value": "CAU$S",
 									"type": "text"
 								},
 								{
 									"key": "importeDeposito",
-									"value": "10000",
+									"value": "4000",
 									"type": "text"
 								},
 								{
 									"key": "fotoTalonDeposito",
 									"type": "file",
-									"src": "/C:/Users/Rocio/Downloads/images (2).jpeg"
+									"src": "/C:/Users/Rocio/Downloads/descarga (2).jpeg"
 								},
 								{
 									"key": "moneda",
-									"value": "$",
+									"value": "U$S",
 									"type": "text"
 								}
 							]
@@ -621,7 +660,13 @@
 					"name": "MODIFICAR DEPOSITO",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzczMjcsImV4cCI6MTcwMTU5NzMyNywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.bEDdjIG4z5EVMvmaodBzOP-HD00I6EpuHiW1HSKdX2Y",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -665,6 +710,42 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "DESCARGAR PDF",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1Mzg0NDIsImV4cCI6MTcwMTU5ODQ0MiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.-jaqoJBva3xK6MhZ-vm6uExNgChmbjRno130PDopo-0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cantDepositos",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:666/deposito/descargarPDF",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"deposito",
+								"descargarPDF"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -678,7 +759,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTk4MDQsImV4cCI6MTcwMTI3OTgwNCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.HsnVHslEkTJKENBoHRmxWKFJtPYAq1yBKXCc1yzURbA",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzczMjcsImV4cCI6MTcwMTU5NzMyNywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.bEDdjIG4z5EVMvmaodBzOP-HD00I6EpuHiW1HSKdX2Y",
 								"type": "text"
 							}
 						],
@@ -701,7 +782,13 @@
 					"name": "TRAER RETIRO",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzczMjcsImV4cCI6MTcwMTU5NzMyNywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.bEDdjIG4z5EVMvmaodBzOP-HD00I6EpuHiW1HSKdX2Y",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "http://localhost:666/retiro/7",
 							"protocol": "http",
@@ -724,7 +811,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDEyMTk4MDQsImV4cCI6MTcwMTI3OTgwNCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.HsnVHslEkTJKENBoHRmxWKFJtPYAq1yBKXCc1yzURbA",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzczMjcsImV4cCI6MTcwMTU5NzMyNywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.bEDdjIG4z5EVMvmaodBzOP-HD00I6EpuHiW1HSKdX2Y",
 								"type": "text"
 							}
 						],
@@ -733,17 +820,17 @@
 							"formdata": [
 								{
 									"key": "nroCuenta",
-									"value": "100003",
+									"value": "100009",
 									"type": "text"
 								},
 								{
 									"key": "tipoCuenta",
-									"value": "CCU$S",
+									"value": "CAU$S",
 									"type": "text"
 								},
 								{
 									"key": "importeRetiro",
-									"value": "1000",
+									"value": "10000",
 									"type": "text"
 								},
 								{
@@ -772,7 +859,13 @@
 					"name": "MODIFICAR RETIRO",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1MzczMjcsImV4cCI6MTcwMTU5NzMyNywiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjUsInJvbCI6IkNhamVybyIsImVtYWlsIjoibWFydGlucmFtaUBnbWFpbC5jb20ifSwiYXBwIjoiU1AgQmFuY28ifQ.bEDdjIG4z5EVMvmaodBzOP-HD00I6EpuHiW1HSKdX2Y",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": [
@@ -1224,7 +1317,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExODMzNTEsImV4cCI6MTcwMTI0MzM1MSwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjEsInJvbCI6Ik9wZXJhZG9yIiwiZW1haWwiOiJyb2NpYmVzc2lvQGdtYWlsLmNvbSJ9LCJhcHAiOiJTUCBCYW5jbyJ9.gWz42uuv8CwGESjXO6-XeANJlWcTdyJenL0Xd1O-8kM",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1Mzc4OTIsImV4cCI6MTcwMTU5Nzg5MiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PIzZ-jlptVQOQbLQjcmli9cEb9ACQLUJSTVXDIlH0zs",
 								"type": "text"
 							}
 						],
@@ -1250,7 +1343,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjUzOTAsImV4cCI6MTcwMTE4NTM5MCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PXz7-NqLrcN0ZmG5bdgPPN_E9L-qSXRCzsvwwERLkhA",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1Mzc4OTIsImV4cCI6MTcwMTU5Nzg5MiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PIzZ-jlptVQOQbLQjcmli9cEb9ACQLUJSTVXDIlH0zs",
 								"type": "text"
 							}
 						],
@@ -1276,7 +1369,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDExMjUzOTAsImV4cCI6MTcwMTE4NTM5MCwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PXz7-NqLrcN0ZmG5bdgPPN_E9L-qSXRCzsvwwERLkhA",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1Mzc4OTIsImV4cCI6MTcwMTU5Nzg5MiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PIzZ-jlptVQOQbLQjcmli9cEb9ACQLUJSTVXDIlH0zs",
 								"type": "text"
 							}
 						],
@@ -1285,24 +1378,24 @@
 							"formdata": [
 								{
 									"key": "ajusteMonto",
-									"value": "500",
+									"value": "2000",
 									"type": "text"
 								},
 								{
 									"key": "motivoAjuste",
-									"value": "Extraccion mal realizado.",
+									"value": "Deposito mal realizado.",
 									"type": "text"
 								},
 								{
 									"key": "nroExtraccion",
-									"value": "3",
-									"type": "text"
+									"value": "14",
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "nroDeposito",
-									"value": "6",
-									"type": "text",
-									"disabled": true
+									"value": "14",
+									"type": "text"
 								}
 							]
 						},
@@ -1333,7 +1426,13 @@
 					"name": "MODIFICAR AJUSTE",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3MDE1Mzc4OTIsImV4cCI6MTcwMTU5Nzg5MiwiYXVkIjoiMzE4OGQ5YTJlNTVlNzE4ZDQ4NDQ4ZTQxN2YzZmExNGM1MDUyNzdkMyIsImRhdGEiOnsiaWQiOjksInJvbCI6IlN1cGVydmlzb3IiLCJlbWFpbCI6ImVzdGViYW5AeWFob28uY29tLmFyIn0sImFwcCI6IlNQIEJhbmNvIn0.PIzZ-jlptVQOQbLQjcmli9cEb9ACQLUJSTVXDIlH0zs",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "urlencoded",
 							"urlencoded": []
@@ -1393,6 +1492,26 @@
 							"path": [
 								"logs",
 								"transacciones"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EXPORTAR LOGS ACCIONES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:666/logs/exportarCSV",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "666",
+							"path": [
+								"logs",
+								"exportarCSV"
 							]
 						}
 					},

@@ -14,13 +14,19 @@
          */
         public static function CargarUno($request, $response, $args){
             $parametros = $request->getParsedBody();
+            $nroOperacion = rand(1,999999);
 
             if(isset($parametros['ajusteMonto']) && isset($parametros['motivoAjuste'])){
 
                 //-->Me fijo que parametro esta setteado
                 if(isset($parametros['nroExtraccion'])){
                     if(Ajuste::generarAjuste($parametros['motivoAjuste'],floatval($parametros['ajusteMonto']),
-                    "extracciones",intval($parametros['nroExtraccion']))){
+                    "extracciones",intval($parametros['nroExtraccion']),$nroOperacion)){
+
+                        //-->Si pude hacer la transaccion, guardo el log.
+                        $data = Logger::ObtenerInfoLog($request);
+                        Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::AJUSTE);
+
                         $payload = json_encode(array("mensaje" => "Ajuste generado correctamente sobre la extraccion!"));
                     }
                     else{
@@ -29,7 +35,10 @@
                 }
                 elseif(isset($parametros['nroDeposito'])){
                     if(Ajuste::generarAjuste($parametros['motivoAjuste'],floatval($parametros['ajusteMonto']),
-                    "depositos",intval($parametros['nroDeposito']))){
+                    "depositos",intval($parametros['nroDeposito']),$nroOperacion)){
+                        //-->Si pude hacer la transaccion, guardo el log.
+                        $data = Logger::ObtenerInfoLog($request);
+                        Logger::CargarLogTransaccion($data->id,$nroOperacion,AccionesLogs::AJUSTE);
                         $payload = json_encode(array("mensaje" => "Ajuste generado correctamente sobre el deposito!"));
                     }
                     else{$payload = json_encode(array("mensaje" => "Ocurrio un error al querer realizar el ajuste sobre el deposito!"));}

@@ -9,6 +9,7 @@
         public $numeroBuscado;//-->La id de retiro o deposito.
         public $numeroCuenta;
         public $ajusteSobre;//-->Extraccion o deposito
+        public $nroOperacion;
 //********************************************* GETTERS *********************************************
         public function getIdAjuste(){
             return $this->idAjuste;
@@ -27,6 +28,9 @@
         }
         public function getAjusteSobre(){
             return $this->ajusteSobre;
+        }
+        public function getNroOperacion(){
+            return $this->nroOperacion;
         }
 //********************************************* SETTERS *********************************************
         public function setIdAjuste($id){
@@ -59,14 +63,20 @@
                 $this->ajusteSobre = $sobre;
             }
         }
+        public function setNroOperacion($nro){
+            if(isset($nro) && is_numeric($nro)) {
+                $this->nroOperacion = $nro;
+            }
+        }
 //********************************************* CONSTRUCTOR *********************************************
-        public static function constructor($monto,$sobre,$motivo,$nroBuscado,$nroCuenta){
+        public static function constructor($monto,$sobre,$motivo,$nroBuscado,$nroCuenta,$nroOperacion){
             $ajuste = new Ajuste();
             $ajuste->setAjusteMonto($monto);
             $ajuste->setAjusteSobre($sobre);
             $ajuste->setMotivoAjuste($motivo);
             $ajuste->setNumeroBuscado($nroBuscado);
             $ajuste->setNumeroCuenta($nroCuenta);
+            $ajuste->setNroOperacion($nroOperacion);
             return $ajuste;
         }
 //********************************************* FUNCIONES *********************************************
@@ -74,12 +84,13 @@
         public static function crear($ajuste){
             $accesoDB = AccesoDatos::obtenerObjetoAcceso();
             $consulta = $accesoDB->retornarConsulta("INSERT INTO ajustes (numeroCuenta,motivoAjuste,ajusteMonto,
-            numeroBuscado,ajusteSobre) VALUES (:numeroCuenta,:motivoAjuste,:ajusteMonto,:numeroBuscado,:ajusteSobre)");
+            numeroBuscado,ajusteSobre,nroOperacion) VALUES (:numeroCuenta,:motivoAjuste,:ajusteMonto,:numeroBuscado,:ajusteSobre,:nroOperacion)");
             $consulta->bindValue(':numeroCuenta',$ajuste->getNumeroCuenta(),PDO::PARAM_INT);
             $consulta->bindValue(':motivoAjuste',$ajuste->getMotivoAjuste(),PDO::PARAM_STR);
             $consulta->bindValue(':ajusteMonto',$ajuste->getAjusteMonto(),PDO::PARAM_INT);
             $consulta->bindValue(':numeroBuscado', $ajuste->getNumeroBuscado(),PDO::PARAM_INT);
             $consulta->bindValue(':ajusteSobre', $ajuste->getAjusteSobre(),PDO::PARAM_STR);
+            $consulta->bindValue(':nroOperacion', $ajuste->getNroOperacion(),PDO::PARAM_INT);
             $consulta->execute();
             return $accesoDB->retornarUltimoInsertado();
         }
@@ -93,7 +104,7 @@
         
         public static function obtenerUno($idAjuste){
             $objAccesoDB = AccesoDatos::obtenerObjetoAcceso();
-            $consulta = $objAccesoDB->retornarConsulta("SELECT idAjuste,numeroCuenta,motivoAjuste,ajusteMonto,ajusteSobre
+            $consulta = $objAccesoDB->retornarConsulta("SELECT idAjuste,numeroCuenta,motivoAjuste,ajusteMonto,ajusteSobre,nroOperacion
             FROM ajustes WHERE idAjuste = :idAjuste");
             $consulta->bindValue(':idAjuste', $idAjuste, PDO::PARAM_INT);
             $consulta->execute();
@@ -128,11 +139,11 @@
          * Me permitira discriminar sobre donde se realiza el ajuste, sobre
          * extracciones o depositos.
          */
-        public static function generarAjuste($motivo,$montoAjuste,$sobre,$nroBuscado){ 
+        public static function generarAjuste($motivo,$montoAjuste,$sobre,$nroBuscado,$nroOperacion){ 
             if($sobre === "extracciones"){
                 $retiro = Retiro::obtenerUno(intval($nroBuscado));
                 if($retiro){
-                    if(Ajuste::aplicarAjusteSobreExtraccion($motivo,$montoAjuste,$retiro)){
+                    if(Ajuste::aplicarAjusteSobreExtraccion($motivo,$montoAjuste,$retiro,$nroOperacion)){
                         return true;
                     }
                 }
@@ -143,7 +154,7 @@
             elseif($sobre === "depositos"){
                 $deposito = Deposito::obtenerUno(intval($nroBuscado));
                 if($deposito){
-                    if(Ajuste::aplicarAjusteSobreDeposito($motivo,$montoAjuste,$deposito)){
+                    if(Ajuste::aplicarAjusteSobreDeposito($motivo,$montoAjuste,$deposito,$nroOperacion)){
                         return true;
                     }
                 }
@@ -167,7 +178,7 @@
          * @return bool true si pudo aplicar el ajuste
          * correctamente, false sino.
          */
-        private static function aplicarAjusteSobreExtraccion($motivo,$montoAjuste,$retiro){
+        private static function aplicarAjusteSobreExtraccion($motivo,$montoAjuste,$retiro,$nroOperacion){
 
             if($retiro->verificarImporte(floatval($montoAjuste))){
                 $cuenta = Cuenta::ObtenerCuentaPorNroYTipo($retiro->getNumeroCuenta(),$retiro->getTipoCuenta(),$retiro->getMoneda());
@@ -177,7 +188,7 @@
                     Cuenta::modificar($cuenta); 
 
                     //-->Genero el ajuste:
-                    $ajuste = Ajuste::constructor($montoAjuste,"Retiro",$motivo,$retiro->getIdRetiro(),$cuenta->getIdCuenta());
+                    $ajuste = Ajuste::constructor($montoAjuste,"Retiro",$motivo,$retiro->getIdRetiro(),$cuenta->getIdCuenta(),$nroOperacion);
                     Ajuste::crear($ajuste);
 
                     return true;
@@ -199,7 +210,7 @@
          * @return bool true si pudo aplicar el ajuste
          * correctamente, false sino.
          */
-        private static function aplicarAjusteSobreDeposito($motivo,$montoAjuste,$deposito){
+        private static function aplicarAjusteSobreDeposito($motivo,$montoAjuste,$deposito,$nroOperacion){
             if($deposito->verificarImporte($montoAjuste)){
                 $cuenta = Cuenta::ObtenerCuentaPorNroYTipo($deposito->getNumeroCuenta(),$deposito->getTipoCuenta(),$deposito->getMoneda());
                 if($cuenta && $cuenta->getEstado()){
@@ -209,7 +220,7 @@
                     Cuenta::modificar($cuenta); 
 
                     //-->Genero el ajuste:
-                    $ajuste = Ajuste::constructor($montoAjuste,"Deposito",$motivo,$deposito->getIdDeposito(),$cuenta->getIdCuenta());
+                    $ajuste = Ajuste::constructor($montoAjuste,"Deposito",$motivo,$deposito->getIdDeposito(),$cuenta->getIdCuenta(),$nroOperacion);
                     Ajuste::crear($ajuste);
                     return true;
                 }

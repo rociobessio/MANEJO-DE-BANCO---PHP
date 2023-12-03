@@ -61,6 +61,10 @@
             else{
                 $payload = json_encode(array("mensaje" => "Quedan parametros por ingresar!"));
             }
+            //-->Guardo el log
+            $data = Logger::ObtenerInfoLog($request);
+            Logger::CargarLog($data->id, AccionesLogs::CARGAR_Cuenta);
+
             $response->getBody()->write($payload);
             return $response->withHeader('Content-Type', 'application/json');
         }

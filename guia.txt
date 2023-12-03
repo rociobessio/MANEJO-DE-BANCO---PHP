@@ -45,7 +45,6 @@ AUTENTIFICADOR JWT:
 Luego tirar en la raiz del proyecto composer update
 
 ==========================================================================>
-Del segundo parcial queda hacer los ultimos dos puntos.
 
 ->Ver deslogueo.
 
@@ -56,18 +55,5 @@ Del segundo parcial queda hacer los ultimos dos puntos.
 Se deberá generar un log de todos los accesos (no sólo login, sino cada vez que
 se intente consumir un recurso, independientemente de su resultado)
 ->Se refiere a TODOS los endpoints?
-->Consultar si esta bien planteado ObtenerInfoLog ya que me ayuda a no
-repetir codigo y devuelve la funcion la info del token para luego generar
-los nuevos logs con la info del usuario. 
-
-->Preguntar si el consultas de todo tipo incluye los traer de ajustes, retiros, depositos, cuentas.
-
-PUNTO G:
--> Se deberá generar un log de transacciones en el que se registrarán los datos de
-fecha y hora, usuario y número de operación, luego de que la operación sea
-registrada.
-
-->Lo hice sobre cargar deposito/retiro. No se si va en cargar cuenta y ajuste.
-Tampoco se si en todos va el log de acciones.
 
 ->Los listar de depositos y retiros son sobre el supervisor o el cajero?
